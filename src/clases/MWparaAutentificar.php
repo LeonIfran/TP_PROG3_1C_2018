@@ -29,7 +29,7 @@ class MWparaAutentificar
 		    $response->getBody()->write('<p>verifico credenciales</p>');
 		    $ArrayDeParametros = $request->getParsedBody();
 		    $nombre=$ArrayDeParametros['usuario'];
-		    $tipo=$ArrayDeParametros['tipo'];
+		    $tipo=$ArrayDeParametros['perfil'];
 		    if($tipo=="socio")
 		    {
 		      $response->getBody()->write("<h3>Bienvenido $nombre </h3>");

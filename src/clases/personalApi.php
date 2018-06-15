@@ -1,5 +1,6 @@
 <?php 
 require_once "personal.php";
+require_once "AutentificadorJWT.php";
 class PersonalApi extends Personal
 {
     public function TraerUno($request, $response, $args) 
@@ -26,7 +27,27 @@ class PersonalApi extends Personal
        $miPersonal->InsertarPersonal();
        $response->getBody()->write("se guardo el Personal");
    }
+
+   public function LogearUno($request, $response,$args)
+   {
+       $ArrayDeParametros = $request->getParsedBody();
+       $usuario=$ArrayDeParametros['usuario'];
+       $pass=$ArrayDeParametros['pass'];
+       $elLogeo=Personal::Logear($usuario,$pass);
+       $eltoken = NULL;
+       //$newResponse = $response->withJson($elLogeo,200);
+       if ($elLogeo != NULL) 
+       {
+            //$datos = $response->withJson($elLogeo, 200);
+            $eltoken = AutentificadorJWT::CrearToken($elLogeo);
+       }
+       //$response->getBody()->write($elLogeo);
+       //return $response;
+       return $eltoken;
+
+   }
 }
+
 
 
 ?>
