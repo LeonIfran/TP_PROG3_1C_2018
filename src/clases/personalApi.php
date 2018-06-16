@@ -30,21 +30,23 @@ class PersonalApi extends Personal
 
    public function LogearUno($request, $response,$args)
    {
+       $eltoken = NULL;
+       $elLogeo = NULL;
+
        $ArrayDeParametros = $request->getParsedBody();
        $usuario=$ArrayDeParametros['usuario'];
        $pass=$ArrayDeParametros['pass'];
        $elLogeo=Personal::Logear($usuario,$pass);
-       $eltoken = NULL;
-       //$newResponse = $response->withJson($elLogeo,200);
+       
        if ($elLogeo != NULL) 
        {
-            //$datos = $response->withJson($elLogeo, 200);
-            $eltoken = AutentificadorJWT::CrearToken($elLogeo);
-       }
-       //$response->getBody()->write($elLogeo);
-       //return $response;
-       return $eltoken;
-
+           $eltoken = AutentificadorJWT::CrearToken($elLogeo);
+       }       
+       //guardo el token en el header
+       $response=$response->withHeader('token',$eltoken);
+       //echo var_dump($eltoken);
+       echo var_dump($response->getHeader('token'));
+       return $response;
    }
 }
 

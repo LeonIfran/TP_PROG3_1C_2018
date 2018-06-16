@@ -29,18 +29,17 @@ class Personal
 	public static function Logear($us,$pass)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-		//$consulta = $objetoAccesoDato->RetornarConsulta("select id, nombre, usuario, perfil from personal where usuario = '$us' AND pass = '$pass'");
 		$consulta = $objetoAccesoDato->RetornarConsulta("select id, nombre, usuario, perfil from personal where usuario = :usuario AND pass = :pass");
 		$consulta->bindValue(':usuario',$us,PDO::PARAM_STR);
 		$consulta->bindValue(':pass',$pass,PDO::PARAM_STR);
 		$consulta->execute();
 		$EmpleadoLogeado = $consulta->fetchObject('Personal');
-		echo var_dump($consulta);
-		echo var_dump($EmpleadoLogeado);
-		if (isempty($EmpleadoLogeado))
+		//echo var_dump($consulta);
+		//echo var_dump($EmpleadoLogeado);
+/* 		if ($EmpleadoLogeado!=NULL)
 		{
 			echo "se logeo<br>";
-		}
+		} */
 		return $EmpleadoLogeado;
 	}
 }

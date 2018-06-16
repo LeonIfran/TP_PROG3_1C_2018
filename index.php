@@ -6,6 +6,8 @@ require './vendor/autoload.php';
 require_once "src/clases/personal.php";
 require_once "src/clases/personalApi.php";
 require_once "src/clases/MWparaAutentificar.php";
+require_once "src/clases/MWparaCORS.php";
+//MWparaCORS
 
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
@@ -28,7 +30,7 @@ $app->group('/comanda', function () {
     $this->get('/{id}',\personalApi::class . ':traerUno');
     $this->post('/',\personalApi::class . ':InsertarUno');
     $this->post('/logear',\personalApi::class . ':LogearUno');
-})->add(\MWparaAutentificar::class . ':VerificarUsuario');
+})->add(\MWparaAutentificar::class . ':VerificarUsuario')->add(\MWparaCORS::class . ':HabilitarCORS8080');
 
 $app->run();
 ?>
