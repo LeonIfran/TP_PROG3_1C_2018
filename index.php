@@ -21,10 +21,13 @@ $app->run(); */
 //echo var_dump(Personal::TraerUnEmpleado(2));
 
 $app = new \Slim\App(["settings" => $config]);
+
+
+
 $app->group('/comanda', function () {
     $this->get('/{id}',\personalApi::class . ':traerUno');
     $this->post('/',\personalApi::class . ':InsertarUno');
-    //$this->post('/{nombre}',\personalApi::class . 'traerUno');
+    $this->post('/logear',\personalApi::class . ':LogearUno');
 })->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
 $app->run();
