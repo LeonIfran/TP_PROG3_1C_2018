@@ -21,6 +21,7 @@ class PersonalApi extends Personal
        $nombre = $ArrayDeParametros['nombre'];
        $perfil = $ArrayDeParametros['perfil'];
 
+
        $miPersonal = new Personal();
        $miPersonal->_nombre = $nombre;
        $miPersonal->_perfil = $perfil;
@@ -30,23 +31,40 @@ class PersonalApi extends Personal
 
    public function LogearUno($request, $response,$args)
    {
+       $respuesta= new stdclass();
        $eltoken = NULL;
        $elLogeo = NULL;
 
        $ArrayDeParametros = $request->getParsedBody();
        $usuario=$ArrayDeParametros['usuario'];
        $pass=$ArrayDeParametros['pass'];
-       $elLogeo=Personal::Logear($usuario,$pass);
+       $datosUsuario=Personal::Logear($usuario,$pass);
        
-       if ($elLogeo != NULL) 
+       if ($datosUsuario != NULL) 
        {
-           $eltoken = AutentificadorJWT::CrearToken($elLogeo);
-       }       
+           $eltoken = AutentificadorJWT::CrearToken($datosUsuario);
+       }
+
+       $respuesta = array('datos'=>$datosUsuario,'token'=>$eltoken);  
        //guardo el token en el header
-       $response=$response->withHeader('token',$eltoken);
-       //echo var_dump($eltoken);
-       echo var_dump($response->getHeader('token'));
-       return $response;
+
+       //$newresponse=$response->withAddedHeader('token', $eltoken);
+
+       //$newresponse=$response->withAddedHeader('token', $eltoken);
+       //echo var_dump($response->getHeader('token'));
+       //$response->getBody()->write('{"valido":"true","empleado":'.json_encode($empleado).',"token":"'.$jwt.'"}');
+       //$newResponse=$response->getBody()->write('{"Valido":"true","token":"'.$eltoken.'"}');
+       //echo var_dump($response->getBody());
+       return $response->withJson($respuesta,200);
+       //return $newResponse;
+       
+   }
+
+   public function HolaMundo($request, $response, $args)
+   {
+       //$request->getHeader('token');
+       //$request->getBody('token');
+       echo "<br>llegue al hola mundo porque todo funciono<br>";
    }
 }
 

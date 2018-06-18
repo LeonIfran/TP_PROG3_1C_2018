@@ -21,7 +21,9 @@ class MWparaAutentificar
          
 		$objDelaRespuesta= new stdclass();
 		$objDelaRespuesta->respuesta="";
-	   
+		$ArrayDeParametros = $request->getParsedBody();
+		echo var_dump($request->getParsedBody());
+		$token=$ArrayDeParametros['token'];
 		if($request->isGet())
 		{
 		// $response->getBody()->write('<p>NO necesita credenciales para los get </p>');
@@ -46,13 +48,14 @@ class MWparaAutentificar
 			//$token="octavioAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0OTc1Njc5NjUsImV4cCI6MTQ5NzU2NDM2NSwiYXVkIjoiNGQ5ODU5ZGU4MjY4N2Y0YzEyMDg5NzY5MzQ2OGFhNzkyYTYxNTMwYSIsImRhdGEiOnsidXN1YXJpbyI6InJvZ2VsaW9AYWd1YS5jb20iLCJwZXJmaWwiOiJBZG1pbmlzdHJhZG9yIiwiYWxpYXMiOiJQaW5rQm95In0sImFwcCI6IkFQSSBSRVNUIENEIDIwMTcifQ.GSpkrzIp2UbJWNfC1brUF_O4h8PyqykmW18vte1bhMw";
 	
 			//tomo el token del header
-			echo var_dump($request->getHeaders());
-			echo var_dump($response->getHeaders());
 
-				$arrayConToken = $response->getHeader('token');
-				$arrayConToken = $request->getHeader('token');
-				$token=$arrayConToken[0];			
-			
+
+				//$arrayConToken = $request->getHeader('token');
+				//echo var_dump($request->getHeader('token'));
+				//$arrayConToken = $request->getParsedBody();
+				//$token=$arrayConToken[0];
+				//$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MjkxNDE2NjAsImV4cCI6MTUyOTE0NTI2MCwiYXVkIjoiMTE3ZDIxMGY1MThlNzY5MjZlY2Y2NTkxYTYxNmVlNjFhMzNlNjU0YiIsImRhdGEiOnsiaWQiOjEsIm5vbWJyZSI6IlBlZHJvIiwicGVyZmlsIjoiYmFydGVuZGVyIiwidXN1YXJpbyI6IlBlZHIwMSJ9LCJhcHAiOiJMYSBjb21hbmRhIDIwMTggTGVvbiBJZnJhbiJ9.wnj9ouKfGcpuGX4n1dW3WcCweD-7PiQIwp08QgEc5Q4';			
+				
 			//var_dump($token);
 			$objDelaRespuesta->esValido=true; 
 			try 
