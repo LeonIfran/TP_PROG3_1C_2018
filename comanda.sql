@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2018 a las 10:10:49
+-- Tiempo de generación: 18-06-2018 a las 20:49:04
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -31,19 +31,21 @@ USE `comanda`;
 CREATE TABLE `personal` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `perfil` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `perfil` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `pass` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `personal`
 --
 
-INSERT INTO `personal` (`id`, `nombre`, `perfil`) VALUES
-(1, 'Pedro', 'bartender'),
-(2, 'Raul', 'cocinero'),
-(3, 'Edson', 'socio'),
-(4, 'Leona', 'bartender'),
-(5, 'Sergio', 'cocinero');
+INSERT INTO `personal` (`id`, `nombre`, `perfil`, `usuario`, `pass`) VALUES
+(1, 'Pedro', 'bartender', 'Pedr01', '1234'),
+(2, 'Raul', 'cocinero', '', ''),
+(3, 'Edson', 'socio', 'Edson01', 'dragon'),
+(4, 'Leona', 'bartender', '', ''),
+(5, 'Sergio', 'cocinero', '', '');
 
 --
 -- Índices para tablas volcadas
