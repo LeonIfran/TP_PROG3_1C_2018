@@ -5,6 +5,9 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require './vendor/autoload.php';
 require_once "src/clases/personal.php";
 require_once "src/clases/personalApi.php";
+require_once "src/clases/pedidosApi.php";
+require_once "src/clases/detallesApi.php";
+require_once "src/clases/detalles.php";
 require_once "src/clases/MWparaAutentificar.php";
 require_once "src/clases/MWparaCORS.php";
 //MWparaCORS
@@ -12,35 +15,39 @@ require_once "src/clases/MWparaCORS.php";
 $config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
-/* $app = new \Slim\App;
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $name = $args['name'];
-    $response->getBody()->write("Hello, $name");
-
-    return $response;
-});
-$app->run(); */
-//echo var_dump(Personal::TraerUnEmpleado(2));
-
 $app = new \Slim\App(["settings" => $config]);
-//$token = null;
+
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+});
 $app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
 
 $app->group('/login', function () {
     $this->post('/',\personalApi::class . ':LogearUno');
-    //$token = $this->post('/hola', \personalApi::class . ':HolaMundo');
 
 });
-//echo "este es el token: <br>".var_dump($token);
+
 $app->group('/comanda', function () {
     $this->get('/{id}',\personalApi::class . ':traerUno');
     $this->post('/',\personalApi::class . ':InsertarUno');
-    $this->post('/hola', \personalApi::class . ':HolaMundo');
-    $this->post('/login',\personalApi::class . ':LogearUno');
-    //$this->post('/logear',\personalApi::class . ':LogearUno');
 })->add(\MWparaAutentificar::class . ':VerificarUsuario')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
+
+$app->group('/pedidos',function () {
+    $this->get('/todos',\pedidosApi::class . ':TraerTodos');
+    $this->post('/mesa',\pedidosApi::class . ':TraerUno');
+    $this->post('/detalles', \pedidosApi::class . ':TraerUnoDetalles');
+    $this->post('/alta', \pedidosApi::class . ':CargarUno');
+});
+$app->group('/detalles',function () {
+    $this->post('/alta', \detallesApi::class . ':CargarUno');
+    $this->post('/modificacion', \detallesApi::class . ':ModificarUno');
+});
 
 $app->run();
 ?>

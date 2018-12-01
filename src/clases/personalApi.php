@@ -23,8 +23,8 @@ class PersonalApi extends Personal
 
 
        $miPersonal = new Personal();
-       $miPersonal->_nombre = $nombre;
-       $miPersonal->_perfil = $perfil;
+       $miPersonal->nombre = $nombre;
+       $miPersonal->perfil = $perfil;
        $miPersonal->InsertarPersonal();
        $response->getBody()->write("se guardo el Personal");
    }
@@ -45,18 +45,9 @@ class PersonalApi extends Personal
            $eltoken = AutentificadorJWT::CrearToken($datosUsuario);
        }
 
-       $respuesta = array('datos'=>$datosUsuario,'token'=>$eltoken);  
-       //guardo el token en el header
+       //$respuesta = array('Mensaje'=>"Bienvenido: ".$datosUsuario->nombre."Su puesto de hoy es: ".$datosUsuario->perfil,'token'=>$eltoken);  
 
-       //$newresponse=$response->withAddedHeader('token', $eltoken);
-
-       //$newresponse=$response->withAddedHeader('token', $eltoken);
-       //echo var_dump($response->getHeader('token'));
-       //$response->getBody()->write('{"valido":"true","empleado":'.json_encode($empleado).',"token":"'.$jwt.'"}');
-       //$newResponse=$response->getBody()->write('{"Valido":"true","token":"'.$eltoken.'"}');
-       //echo var_dump($response->getBody());
-       return $response->withJson($respuesta,200);
-       //return $newResponse;
+       return $response->withJson($eltoken,200);
        
    }
 
