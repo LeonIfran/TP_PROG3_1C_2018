@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 07:28:09
+-- Tiempo de generación: 03-12-2018 a las 08:17:47
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -29,7 +29,8 @@ USE `comanda`;
 --
 
 CREATE TABLE `encuestas` (
-  `cod_mesa` int(11) NOT NULL,
+  `id_encuesta` int(11) NOT NULL,
+  `cod_mesa` int(11) DEFAULT NULL,
   `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mesa` int(11) DEFAULT NULL,
   `restaurante` int(11) DEFAULT NULL,
@@ -42,11 +43,9 @@ CREATE TABLE `encuestas` (
 -- Volcado de datos para la tabla `encuestas`
 --
 
-INSERT INTO `encuestas` (`cod_mesa`, `fecha`, `mesa`, `restaurante`, `mozo`, `cocinero`, `comentarios`) VALUES
-(1000, '2018-12-02 02:21:26', 7, 8, 9, 10, 'la mesa se movia mucho'),
-(10000, '2018-12-02 02:05:35', NULL, NULL, NULL, NULL, NULL),
-(10000, '2018-12-02 02:06:02', NULL, NULL, NULL, NULL, NULL),
-(10000, '2018-12-02 02:06:34', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `encuestas` (`id_encuesta`, `cod_mesa`, `fecha`, `mesa`, `restaurante`, `mozo`, `cocinero`, `comentarios`) VALUES
+(1, 1001, '2018-12-03 04:15:37', 2, 7, 9, 8, 'la mesa tenia platos rotos'),
+(2, 1001, '2018-12-03 04:16:23', 7, 9, 10, 10, 'la comida estaba requisima');
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,8 @@ INSERT INTO `logeos` (`id`, `fecha_logeo`) VALUES
 (1, '2018-12-02 22:02:46'),
 (1, '2018-12-02 22:05:26'),
 (2, '2018-12-03 00:10:25'),
-(2, '2018-12-03 01:58:36');
+(2, '2018-12-03 01:58:36'),
+(2, '2018-12-03 03:52:14');
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,8 @@ INSERT INTO `personal` (`id`, `perfil`, `usuario`, `pass`, `estado`) VALUES
 -- Indices de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  ADD PRIMARY KEY (`cod_mesa`,`fecha`);
+  ADD PRIMARY KEY (`id_encuesta`),
+  ADD KEY `encuestas_fk_cod_mesa` (`cod_mesa`);
 
 --
 -- Indices de la tabla `logeos`
@@ -221,6 +222,11 @@ ALTER TABLE `personal`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `encuestas`
+--
+ALTER TABLE `encuestas`
+  MODIFY `id_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `mesas`
 --
 ALTER TABLE `mesas`
@@ -238,7 +244,7 @@ ALTER TABLE `personal`
 -- Filtros para la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`);
+  ADD CONSTRAINT `encuestas_fk_cod_mesa` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`);
 
 --
 -- Filtros para la tabla `logeos`

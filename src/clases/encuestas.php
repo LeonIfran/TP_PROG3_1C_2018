@@ -2,6 +2,7 @@
 require_once "AccesoDatos.php";
 class encuestas
 {
+    public $id_encuesta;
     public $cod_mesa;
     public $fecha;
     public $mesa;
@@ -10,6 +11,14 @@ class encuestas
     public $cocinero;
     public $comentarios;
 #region setters y getters
+    public function getId_encuesta()
+    {
+        return $this->id_encuesta;
+    }
+    public function setId_encuesta($value)
+    {
+        $this->id_encuesta=$value;
+    }
     public function getCod_mesa()
     {
         return $this->cod_mesa;
@@ -88,7 +97,8 @@ class encuestas
             mozo=:mozo,
             cocinero=:cocinero,
             comentarios=:comentarios
-            WHERE cod_mesa=:cod_mesa");
+            WHERE cod_mesa=:cod_mesa AND id_encuesta=:id_encuesta");
+        $consulta->bindValue(':id_encuesta',$this->getId_encuesta(), PDO::PARAM_INT);
         $consulta->bindValue(':cod_mesa',$this->getCod_mesa(), PDO::PARAM_INT);
         $consulta->bindValue(':mesa',$this->getMesa(), PDO::PARAM_INT);
         $consulta->bindValue(':restaurante', $this->getRestaurante(), PDO::PARAM_INT);

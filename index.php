@@ -63,7 +63,7 @@ $app->group('/mesas',function () {
 });
 $app->group('/clientes',function () {
     $this->get('/pedido/{id}', \detallesApi::class . ':TraerUnoClientes');
-    $this->post('/encuesta',\encuestasApi::class . ':ModificarEncuesta');
+    $this->post('/encuesta',\encuestasApi::class . ':EncuestaCalificar');
 })->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 
 $app->group('/admin',function () {

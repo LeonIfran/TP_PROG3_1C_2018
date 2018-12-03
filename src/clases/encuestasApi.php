@@ -19,11 +19,12 @@ class encuestasApi extends encuestas
         return $response->withJson($objDelaRespuesta, 200);
     }
 
-    public function ModificarEncuesta($request, $response, $args) {
+    public function EncuestaCalificar($request, $response, $args) {
         //$response->getBody()->write("<h1>Modificar  uno</h1>");
         $ArrayDeParametros = $request->getParsedBody();
        //var_dump($ArrayDeParametros);    	
        $miComentario = new encuestas();
+       $miComentario->setId_encuesta($ArrayDeParametros['id']);
        $miComentario->setCod_mesa($ArrayDeParametros['cod_mesa']);
        $miComentario->setMesa($ArrayDeParametros['mesa']);
        $miComentario->setRestaurante($ArrayDeParametros['restaurante']);
