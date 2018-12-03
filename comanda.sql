@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2018 a las 20:49:04
+-- Tiempo de generación: 03-12-2018 a las 02:04:20
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -25,31 +25,179 @@ USE `comanda`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `encuestas`
+--
+
+CREATE TABLE `encuestas` (
+  `cod_mesa` int(11) NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mesa` int(11) DEFAULT NULL,
+  `restaurante` int(11) DEFAULT NULL,
+  `mozo` int(11) DEFAULT NULL,
+  `cocinero` int(11) DEFAULT NULL,
+  `comentarios` varchar(66) COLLATE utf8_spanish2_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `encuestas`
+--
+
+INSERT INTO `encuestas` (`cod_mesa`, `fecha`, `mesa`, `restaurante`, `mozo`, `cocinero`, `comentarios`) VALUES
+(1000, '2018-12-02 02:21:26', 7, 8, 9, 10, 'la mesa se movia mucho'),
+(10000, '2018-12-02 02:05:35', NULL, NULL, NULL, NULL, NULL),
+(10000, '2018-12-02 02:06:02', NULL, NULL, NULL, NULL, NULL),
+(10000, '2018-12-02 02:06:34', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logeos`
+--
+
+CREATE TABLE `logeos` (
+  `id` int(11) NOT NULL,
+  `fecha_logeo` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `logeos`
+--
+
+INSERT INTO `logeos` (`id`, `fecha_logeo`) VALUES
+(1, '2018-12-02 22:02:46');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mesas`
+--
+
+CREATE TABLE `mesas` (
+  `cod_mesa` int(5) NOT NULL,
+  `estado_mesa` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `mesas`
+--
+
+INSERT INTO `mesas` (`cod_mesa`, `estado_mesa`) VALUES
+(1000, 'cerrada'),
+(1001, '“con clientes pagando'),
+(10000, 'cerrada');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `cod_pedido` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  `cod_mesa` int(5) DEFAULT NULL,
+  `desc_pedido` varchar(60) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `foto_mesa` varchar(80) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`cod_pedido`, `cod_mesa`, `desc_pedido`, `foto_mesa`) VALUES
+('A542E', 1000, 'Pizza, Sprite', 'aa.jpg'),
+('AE85L', 1001, 'milanesa, papas fritas, brahma', 'src/clases/fotos/1001_AE85L.jpg'),
+('AE86T', 1001, 'Grilled Cheese, burakki coffee', 'bb.jpg'),
+('AE89B', 1001, 'milanesa, papas fritas, brahma', 'src/clases/fotos/1001_AE89B.jpg'),
+('anPZV', 1000, 'sopa de tomato, empanadas, quilmes', 'src/clases/fotos/1000_anPZV.jpg'),
+('B7E9A', 10000, 'hamburguesa triple, fanta', ''),
+('D9GZJ', 1000, 'choripan, manaos', 'src/clases/fotos/1000_D9GZJ.jpg'),
+('TY7oI', 1000, 'sopa de macaco, piña, tequila', 'src/clases/fotos/1000_TY7oI.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedido_detalles`
+--
+
+CREATE TABLE `pedido_detalles` (
+  `cod_pedido` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  `item` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `area` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `estado_pedido` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `tiempo_estimado` time DEFAULT '00:00:00',
+  `tiempo_inicio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_detalles`
+--
+
+INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `tiempo_estimado`, `tiempo_inicio`, `id`) VALUES
+('A542E', 'sprite', 'bar', 'pendiente', '00:05:00', '2018-11-30 20:34:15', 3),
+('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3),
+('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2),
+('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3),
+('TY7oI', 'tequila', 'bar', 'Pendiente', '00:00:00', '2018-12-01 00:30:47', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `personal`
 --
 
 CREATE TABLE `personal` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `perfil` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `usuario` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `pass` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+  `pass` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` varchar(20) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `personal`
 --
 
-INSERT INTO `personal` (`id`, `nombre`, `perfil`, `usuario`, `pass`) VALUES
-(1, 'Pedro', 'bartender', 'Pedr01', '1234'),
-(2, 'Raul', 'cocinero', '', ''),
-(3, 'Edson', 'socio', 'Edson01', 'dragon'),
-(4, 'Leona', 'bartender', '', ''),
-(5, 'Sergio', 'cocinero', '', '');
+INSERT INTO `personal` (`id`, `perfil`, `usuario`, `pass`, `estado`) VALUES
+(1, 'bartender', 'Pedr01', '1234', 'activo'),
+(2, 'cocinero', 'roberto', 'qwerty', 'activo'),
+(3, 'socio', 'Edson01', 'dragon', 'activo');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `encuestas`
+--
+ALTER TABLE `encuestas`
+  ADD PRIMARY KEY (`cod_mesa`,`fecha`);
+
+--
+-- Indices de la tabla `logeos`
+--
+ALTER TABLE `logeos`
+  ADD PRIMARY KEY (`id`,`fecha_logeo`);
+
+--
+-- Indices de la tabla `mesas`
+--
+ALTER TABLE `mesas`
+  ADD PRIMARY KEY (`cod_mesa`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`cod_pedido`),
+  ADD KEY `cod_mesa` (`cod_mesa`);
+
+--
+-- Indices de la tabla `pedido_detalles`
+--
+ALTER TABLE `pedido_detalles`
+  ADD PRIMARY KEY (`cod_pedido`,`item`),
+  ADD KEY `fk_id_personal` (`id`);
 
 --
 -- Indices de la tabla `personal`
@@ -62,10 +210,44 @@ ALTER TABLE `personal`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `mesas`
+--
+ALTER TABLE `mesas`
+  MODIFY `cod_mesa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+--
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `encuestas`
+--
+ALTER TABLE `encuestas`
+  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`);
+
+--
+-- Filtros para la tabla `logeos`
+--
+ALTER TABLE `logeos`
+  ADD CONSTRAINT `logeos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `personal` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`);
+
+--
+-- Filtros para la tabla `pedido_detalles`
+--
+ALTER TABLE `pedido_detalles`
+  ADD CONSTRAINT `fk_id_personal` FOREIGN KEY (`id`) REFERENCES `personal` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pedido_detalles_ibfk_1` FOREIGN KEY (`cod_pedido`) REFERENCES `pedidos` (`cod_pedido`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

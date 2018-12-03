@@ -1,5 +1,6 @@
 <?php 
 require_once "personal.php";
+require_once "logeos.php";
 require_once "AutentificadorJWT.php";
 class PersonalApi extends Personal
 {
@@ -18,15 +19,18 @@ class PersonalApi extends Personal
    public function InsertarUno($request, $response, $args)
    {
        $ArrayDeParametros = $request->getParsedBody();
-       $nombre = $ArrayDeParametros['nombre'];
+       $usuario = $ArrayDeParametros['usuario'];
        $perfil = $ArrayDeParametros['perfil'];
-
+       $pass = $ArrayDeParametros['pass'];
+       //$estado = $ArrayDeParametros['estado'];
 
        $miPersonal = new Personal();
-       $miPersonal->nombre = $nombre;
-       $miPersonal->perfil = $perfil;
+       $miPersonal->setUsuario($usuario);
+       $miPersonal->setPerfil($perfil);
+       $miPersonal->setPass($pass);
+       //$miEstado->setEstado($estado);
        $miPersonal->InsertarPersonal();
-       $response->getBody()->write("se guardo el Personal");
+       $response->getBody()->write("se guardo el Personal ".$miPersonal->getUsuario());
    }
 
    public function LogearUno($request, $response,$args)
@@ -34,7 +38,7 @@ class PersonalApi extends Personal
        $respuesta= new stdclass();
        $eltoken = NULL;
        $elLogeo = NULL;
-
+       $fechaActual = date('Y-m-d H:i:s');
        $ArrayDeParametros = $request->getParsedBody();
        $usuario=$ArrayDeParametros['usuario'];
        $pass=$ArrayDeParametros['pass'];
@@ -43,6 +47,8 @@ class PersonalApi extends Personal
        if ($datosUsuario != NULL) 
        {
            $eltoken = AutentificadorJWT::CrearToken($datosUsuario);
+           logeos::InsertarUnLogeo($datosUsuario->id,$fechaActual);
+           //echo var_dump($datosUsuario->id);
        }
 
        //$respuesta = array('Mensaje'=>"Bienvenido: ".$datosUsuario->nombre."Su puesto de hoy es: ".$datosUsuario->perfil,'token'=>$eltoken);  

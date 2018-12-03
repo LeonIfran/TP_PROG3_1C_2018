@@ -4,31 +4,59 @@ class Personal
 {
 	#region Atributos
     public $id;
-    public $nombre;
 	public $perfil;
 	public $usuario;
-	public $fecha_alta;
-	public $operaciones;
+	private $_pass;
+	public $estado;
+
 	#endregion
 	#region setters y getters
-	public function getFecha()
+	public function getId()
 	{
-		return $this->fecha_alta;
+		return $this->id;
 	}
-	public function getOperaciones()
+	public function setId($value)
 	{
-		return $this->operaciones;
+		$this->id = $value;
 	}
-	public function setOperaciones($value)
+	public function getPerfil()
 	{
-		$this->operaciones = $value;
+		return $this->perfil;
+	}
+	public function setPerfil($value)
+	{
+		$this->perfil = $value;
+	}
+	public function getUsuario()
+	{
+		return $this->usuario;
+	}
+	public function setUsuario($value)
+	{
+		$this->usuario = $value;
+	}
+	public function getPass()
+	{
+		return $this->_pass;
+	}
+	public function setPass($value)
+	{
+		$this->_pass = $value;
+	}
+	public function getEstado()
+	{
+		return $this->estado;
+	}
+	public function setEstado($value)
+	{
+		$this->estado = $value;
 	}
 	#endregion
     
     public static function TraerUnEmpleado($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, nombre, usuario, perfil, fecha_alta, operaciones from personal where id = :id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select id, nombre, usuario, perfil, estado from personal where id = :id");
 			$consulta->bindvalue(':id',$id, PDO::PARAM_INT);
 			$consulta->execute();
 			$cdBuscado= $consulta->fetchObject('personal');
@@ -37,18 +65,20 @@ class Personal
 
 	public function InsertarPersonal()
 	{
-			   $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			   $consulta =$objetoAccesoDato->RetornarConsulta("INSERT into personal (nombre,perfil, usuario, pass)values(:nombre, :perfil,)");
-			   $consulta->execute();
-			   return $objetoAccesoDato->RetornarUltimoIdInsertado();
-			   
-
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into personal (usuario,pass,perfil)values(:usuario,:pass,:perfil)");
+		$consulta->bindValue(':usuario',$this->getUsuario(), PDO::PARAM_STR);
+		$consulta->bindValue(':perfil', $this->getPerfil(), PDO::PARAM_STR);
+		$consulta->bindValue(':pass', $this->getPass(), PDO::PARAM_STR);
+		//$consulta->bindValue(':estado', $this->getEstado(), PDO::PARAM_STR);
+		$consulta->execute();		
+		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	}
 
 	public static function Logear($us,$clave)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-		$consulta = $objetoAccesoDato->RetornarConsulta("select id, nombre, usuario, perfil from personal where usuario = :usuario AND pass = :pass");
+		$consulta = $objetoAccesoDato->RetornarConsulta("select id, usuario, perfil, estado from personal where usuario = :usuario AND pass = :pass");
 		$consulta->bindValue(':usuario',$us,PDO::PARAM_STR);
 		$consulta->bindValue(':pass',$clave,PDO::PARAM_STR);
 		$consulta->execute();

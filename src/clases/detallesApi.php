@@ -8,6 +8,21 @@ class detallesApi extends detalles
         $newresponse = $response->withJson($todosLosDetalles,200);
         return $newresponse;
     }
+    public function TraerUnoClientes($request, $response, $args)
+    {
+        $codP = $args['id'];
+        $unDetalle=detalles::TraerUnDetalleCliente($codP);
+        $newresponse = $response->withJson($unDetalle,200);
+        return $newresponse;
+    }
+    public function TraerPendientes($request, $response, $args)
+    {
+        $ArrayDeParametros = $request->getParsedBody();
+        $area = $ArrayDeParametros['area'];
+        $unDetalle=detalles::TraerDetallesPendientesArea($area);
+        $newresponse = $response->withJson($unDetalle,200);
+        return $newresponse;
+    }
     public function CargarUno($request, $response, $args) 
     {   
         $ArrayDeParametros = $request->getParsedBody();
@@ -39,6 +54,8 @@ class detallesApi extends detalles
        $miDetalle->setCod_pedido($ArrayDeParametros['cod']);
        $miDetalle->setEstado_pedido($ArrayDeParametros['estado']);
        $miDetalle->setTiempo_estimado($ArrayDeParametros['tiempo_est']);
+       $miDetalle->setId($ArrayDeParametros['id']);
+       $miDetalle->setItem($ArrayDeParametros['item']);
 
        $resultado =$miDetalle->ModificarEstado();
        $objDelaRespuesta= new stdclass();

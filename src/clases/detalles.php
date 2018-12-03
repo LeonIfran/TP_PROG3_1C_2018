@@ -1,4 +1,5 @@
 <?php 
+require_once "AccesoDatos.php";
 class detalles
 {
     public $cod_pedido;
@@ -7,7 +8,7 @@ class detalles
     public $estado_pedido;
     public $tiempo_estimado=null;
     public $tiempo_inicio=null;
-
+    public $id=NULL;
     #region setters y getters
     public function getCod_pedido()
     {
@@ -64,6 +65,15 @@ class detalles
     {
         $this->tiempo_inicio=$value;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($value)
+    {
+        $this->id=$value;
+    }
     #endregion
 
 
@@ -81,7 +91,16 @@ public static function TraerUnDetalle($codpedido)
     $consulta = $objetoAccesoDato->RetornarConsulta("select * from pedido_detalles WHERE cod_pedido=:cod_pedido");
     $consulta->bindvalue(':cod_pedido',$codpedido, PDO::PARAM_STR);
     $consulta->execute();
-    $resultadoConsulta = $consulta->fetchObject('detalles');
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_CLASS,'detalles');
+    return $resultadoConsulta;
+}
+public static function TraerUnDetalleCliente($codpedido)
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->RetornarConsulta("select cod_pedido, item, tiempo_estimado, tiempo_inicio from pedido_detalles WHERE cod_pedido=:cod_pedido");
+    $consulta->bindvalue(':cod_pedido',$codpedido, PDO::PARAM_STR);
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_CLASS,'detalles');
     return $resultadoConsulta;
 }
 public static function TraerDetallesArea($area)
@@ -90,7 +109,17 @@ public static function TraerDetallesArea($area)
     $consulta = $objetoAccesoDato->RetornarConsulta("select * from pedido_detalles WHERE area=:area");
     $consulta->bindvalue(':area',$area, PDO::PARAM_STR);
     $consulta->execute();
-    $resultadoConsulta = $consulta->fetchObject('detalles');
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_CLASS,'detalles');
+    return $resultadoConsulta;
+}
+public static function TraerDetallesPendientesArea($area)
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->RetornarConsulta("select * from pedido_detalles WHERE area=:area AND estado_pedido=:estado_pedido");
+    $consulta->bindvalue(':area',$area, PDO::PARAM_STR);
+    $consulta->bindvalue(':estado_pedido','pendiente', PDO::PARAM_STR);
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_CLASS,'detalles');
     return $resultadoConsulta;
 }
 public function InsertUnDetalle()
@@ -114,11 +143,14 @@ public function ModificarEstado()
        $consulta =$objetoAccesoDato->RetornarConsulta("
            update pedido_detalles 
            set estado_pedido=:estado_pedido,
-           tiempo_estimado=:tiempo_estimado
-           WHERE cod_pedido=:cod_pedido");
-       $consulta->bindValue(':cod_pedido',$this->getCod_pedido(), PDO::PARAM_INT);
+           tiempo_estimado=:tiempo_estimado,
+           id=:id
+           WHERE cod_pedido=:cod_pedido AND item=:item");
+       $consulta->bindValue(':cod_pedido',$this->getCod_pedido(), PDO::PARAM_STR);
        $consulta->bindValue(':estado_pedido',$this->getEstado_pedido(), PDO::PARAM_STR);
        $consulta->bindValue(':tiempo_estimado',$this->getTiempo_estimado(), PDO::PARAM_STR);
+       $consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);
+       $consulta->bindValue(':item',$this->getItem(), PDO::PARAM_STR);
        return $consulta->execute();
 }
 #endregion
