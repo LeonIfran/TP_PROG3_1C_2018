@@ -1,5 +1,6 @@
 <?php 
 require_once "mesas.php";
+require_once "facturas.php";
 
 class mesasApi extends mesas
 {
@@ -64,6 +65,26 @@ class mesasApi extends mesas
     //var_dump($resultado);
     $objDelaRespuesta->resultado=$resultado;
     $objDelaRespuesta->tarea="Mesa ". $miMesa->getCod_mesa()." Cerrada";
+    return $response->withJson($objDelaRespuesta, 200);		
+}
+public function TraerFacturados($request, $response, $args)
+{
+    $ArrayDeParametros = $request->getParsedBody();
+    $opcion = $ArrayDeParametros['opcion'];
+    $miFacturacion=facturas::TraerMasMenosRecaudado($opcion);
+    $objDelaRespuesta= new stdclass();
+    $objDelaRespuesta->tarea="Mesa con ".$opcion." Facturacion!";
+    $objDelaRespuesta->resultado=$miFacturacion;
+    return $response->withJson($objDelaRespuesta, 200);		
+}
+public function TraerFacturaMayorMenor($request, $response, $args)
+{
+    $ArrayDeParametros = $request->getParsedBody();
+    $opcion = $ArrayDeParametros['opcion'];
+    $miFacturacion=facturas::TraerMayorMenorFactura($opcion);
+    $objDelaRespuesta= new stdclass();
+    $objDelaRespuesta->tarea="Mesas con ".$opcion." facturas!";
+    $objDelaRespuesta->resultado=$miFacturacion;
     return $response->withJson($objDelaRespuesta, 200);		
 }
 }

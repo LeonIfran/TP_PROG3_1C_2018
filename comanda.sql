@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 08:17:47
+-- Tiempo de generación: 04-12-2018 a las 00:13:31
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -39,13 +39,30 @@ CREATE TABLE `encuestas` (
   `comentarios` varchar(66) COLLATE utf8_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `encuestas`
+-- Estructura de tabla para la tabla `facturas`
 --
 
-INSERT INTO `encuestas` (`id_encuesta`, `cod_mesa`, `fecha`, `mesa`, `restaurante`, `mozo`, `cocinero`, `comentarios`) VALUES
-(1, 1001, '2018-12-03 04:15:37', 2, 7, 9, 8, 'la mesa tenia platos rotos'),
-(2, 1001, '2018-12-03 04:16:23', 7, 9, 10, 10, 'la comida estaba requisima');
+CREATE TABLE `facturas` (
+  `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL,
+  `cod_mesa` int(5) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `importe` decimal(7,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `facturas`
+--
+
+INSERT INTO `facturas` (`num_factura`, `cod_mesa`, `fecha`, `importe`) VALUES
+(0000001, 10001, '2018-12-02 14:22:00', '500.00'),
+(0000002, 10001, '2018-12-01 17:22:00', '999.99'),
+(0000003, 10001, '2018-12-01 17:22:00', '999.99'),
+(0000004, 1001, '2018-12-01 21:39:22', '99999.99'),
+(0000005, 1001, '2018-12-01 21:39:22', '12000.22'),
+(0000006, 1000, '2018-11-29 12:30:00', '160.95');
 
 -- --------------------------------------------------------
 
@@ -140,8 +157,8 @@ CREATE TABLE `pedido_detalles` (
 --
 
 INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `tiempo_estimado`, `tiempo_inicio`, `id`, `tiempo_fin`) VALUES
-('2S4HD', 'merluza', 'cocina', 'en preparacion', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59'),
-('A542E', 'sprite', 'bar', 'listo para servir', '00:01:10', '2018-11-30 20:34:15', 2, '2018-12-03 02:31:01'),
+('2S4HD', 'merluza', 'cocina', 'cancelado', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59'),
+('A542E', 'sprite', 'bar', 'cancelado', '00:01:10', '2018-11-30 20:34:15', 2, '2018-12-03 02:31:01'),
 ('AE85L', 'choripan', 'cocina', 'terminado', '00:15:00', '2018-12-03 02:33:25', 3, '2018-12-03 02:40:00'),
 ('AE86T', 'sprite', 'bar', 'listo para servir', '00:12:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:43:00'),
 ('AE89B', 'sprite', 'bar', 'terminado', '00:01:30', '2018-12-03 02:34:28', 2, '2018-12-03 02:35:00'),
@@ -186,6 +203,13 @@ ALTER TABLE `encuestas`
   ADD KEY `encuestas_fk_cod_mesa` (`cod_mesa`);
 
 --
+-- Indices de la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  ADD PRIMARY KEY (`num_factura`),
+  ADD KEY `cod_mesa` (`cod_mesa`);
+
+--
 -- Indices de la tabla `logeos`
 --
 ALTER TABLE `logeos`
@@ -225,7 +249,12 @@ ALTER TABLE `personal`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `id_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_encuesta` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  MODIFY `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `mesas`
 --
@@ -235,7 +264,7 @@ ALTER TABLE `mesas`
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -245,6 +274,12 @@ ALTER TABLE `personal`
 --
 ALTER TABLE `encuestas`
   ADD CONSTRAINT `encuestas_fk_cod_mesa` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`);
+
+--
+-- Filtros para la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  ADD CONSTRAINT `facturas_ibfk_1` FOREIGN KEY (`cod_mesa`) REFERENCES `mesas` (`cod_mesa`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `logeos`

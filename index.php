@@ -73,6 +73,11 @@ $app->group('/admin',function () {
     $this->post('/operaciones/individual', \detallesApi::class . ':TraerOperacionesEmpIndv');
     $this->post('/empleados/alta',\personalApi::class . ':InsertarUno');
     $this->post('/empleados/estado', \personalApi::class . ':CambiarEstado');
+    $this->post('/pedidos/vendidos',\detallesApi::class . ':TraerVendidos');
+    $this->post('/pedidos/tardios',\detallesApi::class . ':TraerTarde');
+    $this->post('/pedidos/cancelados',\detallesApi::class . ':TraerEstados');
+    $this->post('/mesas/facturacion',\mesasApi::class . ':TraerFacturados');
+    $this->post('/mesas/facturas',\mesasApi::class . ':TraerFacturaMayorMenor');
 })->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 $app->run();
 ?>

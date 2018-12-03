@@ -216,6 +216,55 @@ public static function TraerOperacionesEmpIndividual($id)
     $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
     return $resultadoConsulta;
 }
+public static function TraerMasMenosVendidos($opcion)
+{   
+    $opcion = strtolower($opcion);
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    if ($opcion=='mas') 
+    {
+        $consulta = $objetoAccesoDato->retornarConsulta("
+        SELECT item, COUNT(*) AS vendidos
+        FROM `pedido_detalles`
+        GROUP BY item
+        ORDER BY COUNT(*) DESC
+        LIMIT 3");
+    }
+    else 
+    {
+        $consulta = $objetoAccesoDato->retornarConsulta("
+        SELECT item, COUNT(*) AS vendidos
+        FROM `pedido_detalles`
+        GROUP BY item
+        ORDER BY COUNT(*) ASC
+        LIMIT 3");
+    }
+
+    //$consulta->bindValue(':id',$id, PDO::PARAM_INT);
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+    return $resultadoConsulta;
+}
+public static function TraerPedidosTarde()
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->retornarConsulta("
+    SELECT cod_pedido, item, tiempo_inicio,tiempo_estimado, TIMESTAMP(tiempo_inicio,tiempo_estimado) AS hora_estipulada, tiempo_fin
+    FROM `pedido_detalles` 
+    WHERE(TIMESTAMP(tiempo_inicio,tiempo_estimado))<(tiempo_fin) AND
+    estado_pedido = 'listo para servir'");
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+    return $resultadoConsulta;
+}
+public static function TraerPorEstado($estado)
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->RetornarConsulta("select * from pedido_detalles WHERE estado_pedido=:estado_pedido");
+    $consulta->bindvalue(':estado_pedido',$estado, PDO::PARAM_STR);
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_CLASS,'detalles');
+    return $resultadoConsulta;
+}
 #endregion
 }
 ?>

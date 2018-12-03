@@ -102,6 +102,32 @@ class detallesApi extends detalles
        $newresponse = $response->withJson($miOperacion,200);
        return $newresponse;
    }
+   public function TraerVendidos($request, $response, $args)
+   {
+       $ArrayDeParametros = $request->getParsedBody();
+       $opcion = $ArrayDeParametros['opcion'];
+       $todosLosVendidos=detalles::TraerMasMenosVendidos($opcion);
+       $objDelaRespuesta= new stdclass();
+       $objDelaRespuesta->tarea="Items ".$opcion." vendidos!";
+       $objDelaRespuesta->resultado=$todosLosVendidos;
+       return $response->withJson($objDelaRespuesta, 200);		
+   }
+   public function TraerTarde($request, $response, $args)
+   {
+       $todosLosPedidosTarde=detalles::TraerPedidosTarde();
+       $newresponse = $response->withJson($todosLosPedidosTarde,200);
+       return $newresponse;
+   }
+   public function TraerEstados($request, $response, $args)
+   {
+       $ArrayDeParametros = $request->getParsedBody();
+       $estado = $ArrayDeParametros['estado'];
+       $todosLosPedidosCancelados=detalles::TraerPorEstado($estado);
+       $newresponse = $response->withJson($todosLosPedidosCancelados,200);
+       return $newresponse;
+   }
+
+   
 }
 
 ?>
