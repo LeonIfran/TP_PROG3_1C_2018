@@ -10,6 +10,7 @@ require_once "src/clases/detallesApi.php";
 require_once "src/clases/detalles.php";
 require_once "src/clases/mesasApi.php";
 require_once "src/clases/encuestasApi.php";
+
 require_once "src/clases/MWparaAutentificar.php";
 require_once "src/clases/MWparaCORS.php";
 //MWparaCORS
@@ -50,6 +51,7 @@ $app->group('/detalles',function () {
     $this->post('/alta', \detallesApi::class . ':CargarUno');
     $this->post('/modificacion', \detallesApi::class . ':ModificarUno');
     $this->post('/pendientes', \detallesApi::class . ':TraerPendientes');
+    $this->post('/terminar', \detallesApi::class . ':TerminarPedido');
 });
 $app->group('/mesas',function () {
     $this->post('/esperando', \mesasApi::class . ':ModificarEsperando');
@@ -62,6 +64,15 @@ $app->group('/mesas',function () {
 $app->group('/clientes',function () {
     $this->get('/pedido/{id}', \detallesApi::class . ':TraerUnoClientes');
     $this->post('/encuesta',\encuestasApi::class . ':ModificarEncuesta');
+})->add(\MWparaCORS::class . ':HabilitarCORSTodos');
+
+$app->group('/admin',function () {
+    $this->get('/empleados/logeos', \personalApi::class . ':TraerLogs');
+    $this->get('/operaciones/areas', \detallesApi::class . ':TraerPorArea');
+    $this->get('/operaciones/areas/empleado', \detallesApi::class . ':TraerPorAreaID');
+    $this->post('/operaciones/individual', \detallesApi::class . ':TraerOperacionesEmpIndv');
+    $this->post('/empleados/alta',\personalApi::class . ':InsertarUno');
+    $this->post('/empleados/estado', \personalApi::class . ':CambiarEstado');
 })->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 $app->run();
 ?>

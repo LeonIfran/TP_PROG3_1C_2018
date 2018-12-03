@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 02:04:20
+-- Tiempo de generación: 03-12-2018 a las 07:28:09
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -64,7 +64,10 @@ CREATE TABLE `logeos` (
 --
 
 INSERT INTO `logeos` (`id`, `fecha_logeo`) VALUES
-(1, '2018-12-02 22:02:46');
+(1, '2018-12-02 22:02:46'),
+(1, '2018-12-02 22:05:26'),
+(2, '2018-12-03 00:10:25'),
+(2, '2018-12-03 01:58:36');
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,8 @@ CREATE TABLE `mesas` (
 INSERT INTO `mesas` (`cod_mesa`, `estado_mesa`) VALUES
 (1000, 'cerrada'),
 (1001, '“con clientes pagando'),
-(10000, 'cerrada');
+(10000, 'cerrada'),
+(10001, 'con clientes esperando');
 
 -- --------------------------------------------------------
 
@@ -104,6 +108,7 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`cod_pedido`, `cod_mesa`, `desc_pedido`, `foto_mesa`) VALUES
+('2S4HD', 10001, 'merluza, vino', 'src/clases/fotos/10001_2S4HD.jpg'),
 ('A542E', 1000, 'Pizza, Sprite', 'aa.jpg'),
 ('AE85L', 1001, 'milanesa, papas fritas, brahma', 'src/clases/fotos/1001_AE85L.jpg'),
 ('AE86T', 1001, 'Grilled Cheese, burakki coffee', 'bb.jpg'),
@@ -126,19 +131,25 @@ CREATE TABLE `pedido_detalles` (
   `estado_pedido` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `tiempo_estimado` time DEFAULT '00:00:00',
   `tiempo_inicio` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id` int(11) DEFAULT NULL
+  `id` int(11) DEFAULT NULL,
+  `tiempo_fin` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `pedido_detalles`
 --
 
-INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `tiempo_estimado`, `tiempo_inicio`, `id`) VALUES
-('A542E', 'sprite', 'bar', 'pendiente', '00:05:00', '2018-11-30 20:34:15', 3),
-('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3),
-('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2),
-('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3),
-('TY7oI', 'tequila', 'bar', 'Pendiente', '00:00:00', '2018-12-01 00:30:47', 3);
+INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `tiempo_estimado`, `tiempo_inicio`, `id`, `tiempo_fin`) VALUES
+('2S4HD', 'merluza', 'cocina', 'en preparacion', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59'),
+('A542E', 'sprite', 'bar', 'listo para servir', '00:01:10', '2018-11-30 20:34:15', 2, '2018-12-03 02:31:01'),
+('AE85L', 'choripan', 'cocina', 'terminado', '00:15:00', '2018-12-03 02:33:25', 3, '2018-12-03 02:40:00'),
+('AE86T', 'sprite', 'bar', 'listo para servir', '00:12:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:43:00'),
+('AE89B', 'sprite', 'bar', 'terminado', '00:01:30', '2018-12-03 02:34:28', 2, '2018-12-03 02:35:00'),
+('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3, NULL),
+('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2, NULL),
+('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3, NULL),
+('D9GZJ', 'sprite', 'bar', 'listo para servir', '00:10:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:41:00'),
+('TY7oI', 'tequila', 'bar', 'listo para servir', '00:11:13', '2018-12-01 00:30:47', 3, '2018-12-01 00:44:00');
 
 -- --------------------------------------------------------
 
@@ -160,7 +171,7 @@ CREATE TABLE `personal` (
 
 INSERT INTO `personal` (`id`, `perfil`, `usuario`, `pass`, `estado`) VALUES
 (1, 'bartender', 'Pedr01', '1234', 'activo'),
-(2, 'cocinero', 'roberto', 'qwerty', 'activo'),
+(2, 'cocinero', 'roberto', 'qwerty', 'suspendido'),
 (3, 'socio', 'Edson01', 'dragon', 'activo');
 
 --
@@ -213,7 +224,7 @@ ALTER TABLE `personal`
 -- AUTO_INCREMENT de la tabla `mesas`
 --
 ALTER TABLE `mesas`
-  MODIFY `cod_mesa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+  MODIFY `cod_mesa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 --
 -- AUTO_INCREMENT de la tabla `personal`
 --

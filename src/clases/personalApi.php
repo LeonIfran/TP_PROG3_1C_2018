@@ -11,11 +11,6 @@ class PersonalApi extends Personal
         $newResponse = $response->withJson($elEmpleado, 200);  
         return $newResponse;
    }
-/*    public function hacerAlgo($request, $response, $args)
-   {
-        echo var_dump($request->getParsedBody());
-   } */
-
    public function InsertarUno($request, $response, $args)
    {
        $ArrayDeParametros = $request->getParsedBody();
@@ -57,6 +52,44 @@ class PersonalApi extends Personal
        
    }
 
+   public function TraerLogs($request, $response, $args) 
+   {
+       $misLogs=logeos::TraerTodosLosLogs();
+       $newResponse = $response->withJson($misLogs, 200);  
+       return $newResponse;
+   }
+  public function CambiarEstado($request, $response, $args)
+  {
+    $ArrayDeParametros = $request->getParsedBody();
+    $miPersonal = new personal();
+    $miPersonal->setId($ArrayDeParametros['id']);
+    $miPersonal->setEstado($ArrayDeParametros['estado']);
+    
+    $resultado =$miPersonal->ModificarEstadoPersonal($request, $response, $args);
+    $objDelaRespuesta= new stdclass();
+    $objDelaRespuesta->resultado=$resultado;
+    $objDelaRespuesta->tarea="Se cambio el estado del empleado con id:".$miPersonal->getId();
+    return $response->withJson($objDelaRespuesta, 200);		
+  }
+  public function BorrarUno($request, $response, $args) {
+    $ArrayDeParametros = $request->getParsedBody();
+    $id=$ArrayDeParametros['id'];
+    $personal= new personal();
+    $personal->setId($id);
+    $cantidadDeBorrados=$personal->BorrarPersonal();
+    $objDelaRespuesta= new stdclass();
+    $objDelaRespuesta->cantidad=$cantidadDeBorrados;
+   if($cantidadDeBorrados>0)
+       {
+            $objDelaRespuesta->resultado="se borro el Personal con ID: $id!!!";
+       }
+       else
+       {
+           $objDelaRespuesta->resultado="no Borro nada!!!";
+       }
+    $newResponse = $response->withJson($objDelaRespuesta, 200);
+    return $newResponse;
+}
    public function HolaMundo($request, $response, $args)
    {
        //$request->getHeader('token');

@@ -64,6 +64,44 @@ class detallesApi extends detalles
        $objDelaRespuesta->tarea="Pedido ".$miDetalle->getCod_pedido()." modificado satisfactoriamente";
        return $response->withJson($objDelaRespuesta, 200);		
    }
+   public function TerminarPedido($request, $response, $args) {
+    $ArrayDeParametros = $request->getParsedBody();
+   $tiempo = date('Y-m-d H:i:s');   	
+   $miDetalle = new detalles();
+   $miDetalle->setCod_pedido($ArrayDeParametros['cod']);
+   $miDetalle->setItem($ArrayDeParametros['item']);
+   $miDetalle->setEstado_pedido('listo para servir');
+   $miDetalle->setTiempo_fin($tiempo);
+   
+
+   $resultado =$miDetalle->ModificarTerminar();
+   $objDelaRespuesta= new stdclass();
+   //var_dump($resultado);
+   $objDelaRespuesta->resultado=$resultado;
+   $objDelaRespuesta->tarea="Pedido ".$miDetalle->getCod_pedido()." Listo para servir!";
+   return $response->withJson($objDelaRespuesta, 200);		
+}
+   public function TraerPorArea($request, $response, $args)
+   {
+    $todasOperaciones=detalles::TraerOperacionesXArea();
+    $newresponse = $response->withJson($todasOperaciones,200);
+    return $newresponse;
+   }
+
+   public function TraerPorAreaID($request, $response, $args)
+   {
+       $todasOperaciones=detalles::TraerOperacionesAreaEmp();
+       $newresponse = $response->withJson($todasOperaciones,200);
+       return $newresponse;
+   }
+   public function TraerOperacionesEmpIndv($request, $response, $args)
+   {
+       $ArrayDeParametros = $request->getParsedBody();
+       $id = $ArrayDeParametros['id'];
+       $miOperacion=detalles::TraerOperacionesEmpIndividual($id);
+       $newresponse = $response->withJson($miOperacion,200);
+       return $newresponse;
+   }
 }
 
 ?>

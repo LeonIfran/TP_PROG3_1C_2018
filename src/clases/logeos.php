@@ -39,6 +39,13 @@ class logeos
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	}
+	public static function TraerTodosLosLogs()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta = $objetoAccesoDato->retornarConsulta("SELECT L.id, P.usuario, L.fecha_logeo FROM logeos AS L, personal AS P WHERE L.id=P.id");
+		$consulta->execute();
+		return $consulta->fetchAll(PDO::FETCH_OBJ);
+	}
 }
 
 ?>

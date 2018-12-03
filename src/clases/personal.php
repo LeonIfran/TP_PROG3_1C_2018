@@ -85,6 +85,57 @@ class Personal
 		$EmpleadoLogeado = $consulta->fetchObject('personal');
 		return $EmpleadoLogeado;
 	}
+	public function ModificarPersonal()
+	{
+		   $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		   $consulta =$objetoAccesoDato->RetornarConsulta("
+			   update personal 
+			   set usuario=:usuario,
+			   pass=:pass,
+			   perfil=:perfil,
+			   estado=:estado
+			   WHERE id=:id");
+		   $consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);
+		   $consulta->bindValue(':usuario',$this->getUsuario(), PDO::PARAM_STR);
+		   $consulta->bindValue(':perfil', $this->getPerfil(), PDO::PARAM_STR);
+		   $consulta->bindValue(':pass', $this->getPass(), PDO::PARAM_STR);
+		   $consulta->bindValue(':estado', $this->getEstado(), PDO::PARAM_STR);
+		   return $consulta->execute();
+	}
+	public function ModificarPerfilPersonal()
+	{
+		   $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		   $consulta =$objetoAccesoDato->RetornarConsulta("
+			   update personal 
+			   set perfil=:perfil
+			   WHERE id=:id");
+		   
+		   $consulta->bindValue(':perfil', $this->getPerfil(), PDO::PARAM_STR);
+		   return $consulta->execute();
+	}
+	public function ModificarEstadoPersonal()
+	{
+		   $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		   $consulta =$objetoAccesoDato->RetornarConsulta("
+			   update personal 
+			   set estado=:estado
+			   WHERE id=:id");
+		   $consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);
+		   $consulta->bindValue(':estado', $this->getEstado(), PDO::PARAM_STR);
+		   return $consulta->execute();
+	}
+	public function BorrarPersonal()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta =$objetoAccesoDato->RetornarConsulta("
+			   delete 
+			   from personal 				
+			   WHERE id=:id");	
+		$consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);		
+		$consulta->execute();
+		return $consulta->rowCount();
+	}
+	
 }
 
 

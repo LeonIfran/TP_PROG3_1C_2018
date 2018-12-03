@@ -9,6 +9,7 @@ class detalles
     public $tiempo_estimado=null;
     public $tiempo_inicio=null;
     public $id=NULL;
+    public $tiempo_fin;
     #region setters y getters
     public function getCod_pedido()
     {
@@ -73,6 +74,15 @@ class detalles
     public function setId($value)
     {
         $this->id=$value;
+    }
+    public function getTiempo_fin()
+    {
+        return $this->tiempo_fin;
+    }
+
+    public function setTiempo_fin($value)
+    {
+        $this->tiempo_fin=$value;
     }
     #endregion
 
@@ -152,6 +162,59 @@ public function ModificarEstado()
        $consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);
        $consulta->bindValue(':item',$this->getItem(), PDO::PARAM_STR);
        return $consulta->execute();
+}
+public function ModificarTerminar()
+{
+       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+       $consulta =$objetoAccesoDato->RetornarConsulta("
+           update pedido_detalles 
+           set estado_pedido=:estado_pedido,
+           tiempo_fin=:tiempo_fin
+           WHERE cod_pedido=:cod_pedido AND item=:item");
+       $consulta->bindValue(':cod_pedido',$this->getCod_pedido(), PDO::PARAM_STR);
+       $consulta->bindValue(':estado_pedido',$this->getEstado_pedido(), PDO::PARAM_STR);
+       $consulta->bindValue(':tiempo_fin',$this->getTiempo_fin(), PDO::PARAM_STR);
+       $consulta->bindValue(':item',$this->getItem(), PDO::PARAM_STR);
+       return $consulta->execute();
+}
+
+public static function TraerOperacionesXArea()
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->retornarConsulta("
+    SELECT area, COUNT(*) AS operaciones
+    FROM pedido_detalles
+    GROUP BY area");
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+    return $resultadoConsulta;
+}
+
+public static function TraerOperacionesAreaEmp()
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->retornarConsulta("
+    SELECT D.area, D.id, P.usuario, COUNT(D.id) AS operaciones
+    FROM pedido_detalles as D, personal as P
+    WHERE D.id=P.id
+    GROUP BY id
+    ORDER BY area ASC");
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+    return $resultadoConsulta;
+}
+public static function TraerOperacionesEmpIndividual($id)
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    $consulta = $objetoAccesoDato->retornarConsulta("
+    SELECT D.area, D.id, P.usuario, COUNT(D.id) AS operaciones
+    FROM pedido_detalles as D, personal as P
+    WHERE D.id=P.id AND D.id=:id
+    ORDER BY area ASC");
+    $consulta->bindValue(':id',$id, PDO::PARAM_INT);
+    $consulta->execute();
+    $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+    return $resultadoConsulta;
 }
 #endregion
 }

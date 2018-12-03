@@ -67,9 +67,9 @@ class Pedidos
         //echo var_dump($resultadoConsulta);
         //echo $resultadoConsulta[0]->tiempo_estimado;
         //return $consulta->fetchAll(PDO::FETCH_OBJ);
-        echo $tiempoRestante = time() - ($resultadoConsulta[0]->tiempo_estimado);
+/*         echo $tiempoRestante = time() - ($resultadoConsulta[0]->tiempo_estimado);
         echo $tiempoRestante;
-        echo date('h:i:s',$tiempoRestante);
+        echo date('h:i:s',$tiempoRestante); */
         return $resultadoConsulta;
     }
     public static function TraerUnPedidoConDetalles($codmesa)
