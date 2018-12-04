@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2018 a las 01:55:57
+-- Tiempo de generación: 04-12-2018 a las 05:38:42
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -99,7 +99,8 @@ INSERT INTO `logeos` (`id`, `fecha_logeo`) VALUES
 (1, '2018-12-02 22:05:26'),
 (2, '2018-12-03 00:10:25'),
 (2, '2018-12-03 01:58:36'),
-(2, '2018-12-03 03:52:14');
+(2, '2018-12-03 03:52:14'),
+(2, '2018-12-04 00:58:44');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,9 @@ INSERT INTO `mesas` (`cod_mesa`, `estado_mesa`) VALUES
 (1000, 'cerrada'),
 (1001, '“con clientes pagando'),
 (10000, 'cerrada'),
-(10001, 'con clientes esperando');
+(10001, 'con clientes esperando'),
+(10002, 'cerrada'),
+(10003, 'cerrada');
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,7 @@ INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `t
 ('AE86T', 'sprite', 'bar', 'listo para servir', '00:12:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:43:00'),
 ('AE89B', 'sprite', 'bar', 'terminado', '00:01:30', '2018-12-03 02:34:28', 2, '2018-12-03 02:35:00'),
 ('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3, NULL),
-('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2, NULL),
+('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2, '2018-11-30 23:45:00'),
 ('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3, NULL),
 ('D9GZJ', 'milanesa', 'cocina', 'en preparacion', '00:50:06', '2018-12-03 21:40:42', 3, NULL),
 ('D9GZJ', 'sprite', 'bar', 'listo para servir', '00:10:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:41:00'),
@@ -276,7 +279,7 @@ ALTER TABLE `facturas`
 -- AUTO_INCREMENT de la tabla `mesas`
 --
 ALTER TABLE `mesas`
-  MODIFY `cod_mesa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+  MODIFY `cod_mesa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
 --
 -- AUTO_INCREMENT de la tabla `personal`
 --

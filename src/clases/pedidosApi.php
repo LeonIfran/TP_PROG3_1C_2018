@@ -9,7 +9,12 @@ class pedidosApi extends pedidos
         $newresponse = $response->withJson($todosLosPedidos,200);
         return $newresponse;
     }
-
+    public function TraerTodosConDetalle($request, $response, $args)
+    {
+        $todosLosPedidos=pedidos::TraerTodosPedidosConDetalles();
+        $newresponse = $response->withJson($todosLosPedidos,200);
+        return $newresponse;
+    }
     public function TraerUno($request, $response, $args)
     {
         //$cod=$args['cod'];
@@ -68,7 +73,7 @@ class pedidosApi extends pedidos
         }
 
         $miPedido->InsertUnPedido();
-        $objDelaRespuesta->respuesta="Se guardo El pedido $codpedido para la mesa $cod_mesa en: ".$miPedido->Getfoto_mesa();   
+        $objDelaRespuesta->respuesta="Se guardo El pedido $codpedido para la mesa $cod_mesa con foto: ".$miPedido->Getfoto_mesa();   
         return $response->withJson($objDelaRespuesta, 200);
         
 

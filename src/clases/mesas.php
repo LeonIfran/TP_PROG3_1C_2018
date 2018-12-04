@@ -13,7 +13,7 @@ class mesas
 
     public function setCod_mesa($value)
     {
-        $this->cod_mesa;
+        $this->cod_mesa=$value;
     }
 
     public function getEstado_mesa()
@@ -23,7 +23,7 @@ class mesas
 
     public function setEstado_mesa($value)
     {
-        $this->estado_mesa;
+        $this->estado_mesa=$value;
     }
 #endregion
 
@@ -67,6 +67,17 @@ public static function TraerPorComentarios($opcion)
         $consulta->execute();			
         return $consulta->fetchAll(PDO::FETCH_OBJ);		
 }
+public function InsertarMesa()
+{
+    $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+    $consulta =$objetoAccesoDato->RetornarConsulta("
+    INSERT into mesas (estado_mesa) values (:estado_mesa)");
+    //$consulta->bindValue(':cod_mesa',$this->getCod_mesa(), PDO::PARAM_INT);
+    $consulta->bindValue(':estado_mesa',$this->getEstado_mesa(), PDO::PARAM_STR);
+    $consulta->execute();		
+    return $objetoAccesoDato->RetornarUltimoIdInsertado();
+}
+
 #endregion
 }
 

@@ -55,12 +55,21 @@ class Pedidos
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_CLASS, "pedidos");
     }
-
+    public static function TraerTodosPedidosConDetalles()
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("
+        select p.cod_pedido, p.cod_mesa, d.item, d.estado_pedido
+        from pedido_detalles as d, pedidos as p
+        WHERE p.cod_pedido = d.cod_pedido
+        ");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_OBJ);
+    }
     public static function TraerUnPedido($codmesa)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("select * from pedidos WHERE cod_pedido=:cod_pedido");
-        //$consulta = $objetoAccesoDato->RetornarConsulta("select * from pedido_detalles WHERE cod_pedido=:cod_pedido");
         $consulta->bindvalue(':cod_pedido',$codmesa, PDO::PARAM_STR);
         $consulta->execute();
         $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);

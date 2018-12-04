@@ -124,6 +124,25 @@ class mesasApi extends mesas
         $objDelaRespuesta->resultado=$miFacturacion;
         return $response->withJson($objDelaRespuesta, 200);		
     }
+    public function CargarUno($request, $response, $args)
+    {
+        $objDelaRespuesta= new stdclass();
+        $ArrayDeParametros = $request->getParsedBody();//tomo los parametros del POST
+
+        //los asigno a variables
+        //$cod_mesa= $ArrayDeParametros['codmesa'];
+        $estado= 'cerrada';
+        $miPedido = new mesas();
+        //asigno los atributos
+        //$miPedido->setCod_mesa($cod_mesa);
+        $miPedido->setEstado_mesa('cerrada');
+        $miPedido->InsertarMesa();
+        $objDelaRespuesta->respuesta="Se Agrego una nueva mesa";   
+        return $response->withJson($objDelaRespuesta, 200);
+        
+
+
+    }
 }
 
 ?>

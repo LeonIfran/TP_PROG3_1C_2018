@@ -95,6 +95,7 @@ public static function TraerTodosLosDetalles()
     $consulta->execute();
     return $consulta->fetchAll(PDO::FETCH_CLASS, "detalles");
 }
+
 public static function TraerUnDetalle($codpedido)
 {
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
@@ -108,13 +109,9 @@ public static function TraerUnDetalleClientes($codPedido)
 {
     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
     $consulta = $objetoAccesoDato->RetornarConsulta("
-    SELECT cod_pedido,item,tiempo_inicio,tiempo_estimado ,TIMEDIFF(TIMESTAMP(tiempo_inicio,tiempo_estimado),CURRENT_TIMESTAMP) as tiempo_restante
-    FROM `pedido_detalles` 
-    WHERE estado_pedido = 'en preparacion' 
-    AND
-    cod_pedido = :cod_pedido
-    AND 
-    TIMEDIFF(TIMESTAMP(tiempo_inicio,tiempo_estimado),CURRENT_TIMESTAMP)>0");
+    SELECT cod_pedido,item,estado_pedido,tiempo_inicio,tiempo_estimado ,TIMEDIFF(TIMESTAMP(tiempo_inicio,tiempo_estimado),CURRENT_TIMESTAMP) as tiempo_restante
+    FROM pedido_detalles 
+    WHERE cod_pedido = :cod_pedido AND (estado_pedido = 'en preparacion' OR estado_pedido = 'listo para servir') ");
     $consulta->bindvalue(':cod_pedido',$codPedido, PDO::PARAM_STR);
     $consulta->execute();
     $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
