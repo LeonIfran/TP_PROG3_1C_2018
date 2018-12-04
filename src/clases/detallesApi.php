@@ -65,6 +65,26 @@ class detallesApi extends detalles
        $objDelaRespuesta->tarea="Pedido ".$miDetalle->getCod_pedido()." modificado satisfactoriamente";
        return $response->withJson($objDelaRespuesta, 200);		
    }
+   public function PrepararPedido($request, $response, $args) 
+   {
+    $ArrayDeParametros = $request->getParsedBody();
+   $tiempo = date('Y-m-d H:i:s');   	
+   $miDetalle = new detalles();
+   $miDetalle->setCod_pedido($ArrayDeParametros['cod']);
+   $miDetalle->setEstado_pedido('en preparacion');
+   $miDetalle->setTiempo_estimado($ArrayDeParametros['tiempo_est']);
+   $miDetalle->setId($ArrayDeParametros['id']);
+   $miDetalle->setItem($ArrayDeParametros['item']);
+   $miDetalle->setEstado_pedido('listo para servir');
+   $miDetalle->setTiempo_inicio($tiempo);
+
+   $resultado =$miDetalle->ModificarPreparar();
+   $objDelaRespuesta= new stdclass();
+   //var_dump($resultado);
+   $objDelaRespuesta->resultado=$resultado;
+   $objDelaRespuesta->tarea="Pedido ".$miDetalle->getCod_pedido()." ".$miDetalle->getItem()." en preparacion!";
+   return $response->withJson($objDelaRespuesta, 200);		
+}
    public function TerminarPedido($request, $response, $args) {
     $ArrayDeParametros = $request->getParsedBody();
    $tiempo = date('Y-m-d H:i:s');   	

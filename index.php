@@ -44,12 +44,14 @@ $app->group('/detalles',function () {
     $this->post('/alta', \detallesApi::class . ':CargarUno');
     $this->post('/modificacion', \detallesApi::class . ':ModificarUno');
     $this->post('/pendientes', \detallesApi::class . ':TraerPendientes');
+    $this->post('/preparar', \detallesApi::class . ':PrepararPedido');
     $this->post('/terminar', \detallesApi::class . ':TerminarPedido');
 })->add(\MWparaAutentificar::class . ':VerificarUsuario')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 
 $app->group('/socios',function () {
     $this->post('/pedidos', \pedidosApi::class . ':TraerTodosConDetalle');
     $this->post('/cerrar', \mesasApi::class . ':ModificarCerrar');
+    $this->post('/factura', \mesasApi::class . ':CargarFactura');
 })->add(\MWparaAutentificar::class . ':VerificarUsuario')->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 
 $app->group('/mesas',function () {

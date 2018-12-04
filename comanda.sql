@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2018 a las 05:38:42
+-- Tiempo de generación: 04-12-2018 a las 19:00:05
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -48,7 +48,6 @@ INSERT INTO `encuestas` (`id_encuesta`, `cod_mesa`, `fecha`, `mesa`, `restaurant
 (2, 10001, '2018-12-03 00:00:00', 5, 5, 5, 5, 'asdsasdadsa'),
 (3, 10001, '2018-11-29 00:00:00', 10, 6, 7, 9, 'dsasasd'),
 (4, 10001, '2018-11-27 00:00:00', 5, 4, 2, 3, 'adsadsdas'),
-(5, 10000, '2018-12-02 09:30:00', 2, 3, 2, 7, ''),
 (6, 10000, '2018-12-02 16:30:00', 3, 5, 4, 5, 'asddsadasdas');
 
 -- --------------------------------------------------------
@@ -72,12 +71,10 @@ INSERT INTO `facturas` (`num_factura`, `cod_mesa`, `fecha`, `importe`) VALUES
 (0000001, 10001, '2018-12-02 14:22:00', '500.00'),
 (0000002, 10001, '2018-12-01 17:22:00', '999.99'),
 (0000003, 10001, '2018-12-01 17:22:00', '999.99'),
-(0000004, 1001, '2018-12-01 21:39:22', '99999.99'),
-(0000005, 1001, '2018-12-01 21:39:22', '12000.22'),
-(0000006, 1000, '2018-11-29 12:30:00', '160.95'),
 (0000007, 10000, '2018-11-29 00:00:00', '100.00'),
 (0000008, 10000, '2018-11-01 00:00:00', '200.00'),
-(0000009, 10000, '2018-11-15 00:00:00', '250.00');
+(0000009, 10000, '2018-11-15 00:00:00', '250.00'),
+(0000010, 10002, '2018-12-04 14:41:55', '345.30');
 
 -- --------------------------------------------------------
 
@@ -100,7 +97,8 @@ INSERT INTO `logeos` (`id`, `fecha_logeo`) VALUES
 (2, '2018-12-03 00:10:25'),
 (2, '2018-12-03 01:58:36'),
 (2, '2018-12-03 03:52:14'),
-(2, '2018-12-04 00:58:44');
+(2, '2018-12-04 00:58:44'),
+(2, '2018-12-04 14:29:25');
 
 -- --------------------------------------------------------
 
@@ -118,8 +116,6 @@ CREATE TABLE `mesas` (
 --
 
 INSERT INTO `mesas` (`cod_mesa`, `estado_mesa`) VALUES
-(1000, 'cerrada'),
-(1001, '“con clientes pagando'),
 (10000, 'cerrada'),
 (10001, 'con clientes esperando'),
 (10002, 'cerrada'),
@@ -143,15 +139,7 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`cod_pedido`, `cod_mesa`, `desc_pedido`, `foto_mesa`) VALUES
-('2S4HD', 10001, 'merluza, vino', 'src/clases/fotos/10001_2S4HD.jpg'),
-('A542E', 1000, 'Pizza, Sprite', 'aa.jpg'),
-('AE85L', 1001, 'milanesa, papas fritas, brahma', 'src/clases/fotos/1001_AE85L.jpg'),
-('AE86T', 1001, 'Grilled Cheese, burakki coffee', 'bb.jpg'),
-('AE89B', 1001, 'milanesa, papas fritas, brahma', 'src/clases/fotos/1001_AE89B.jpg'),
-('anPZV', 1000, 'sopa de tomato, empanadas, quilmes', 'src/clases/fotos/1000_anPZV.jpg'),
-('B7E9A', 10000, 'hamburguesa triple, fanta', ''),
-('D9GZJ', 1000, 'choripan, manaos', 'src/clases/fotos/1000_D9GZJ.jpg'),
-('TY7oI', 1000, 'sopa de macaco, piña, tequila', 'src/clases/fotos/1000_TY7oI.jpg');
+('2S4HD', 10001, 'merluza, vino', 'src/clases/fotos/10001_2S4HD.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,18 +163,7 @@ CREATE TABLE `pedido_detalles` (
 --
 
 INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `tiempo_estimado`, `tiempo_inicio`, `id`, `tiempo_fin`) VALUES
-('2S4HD', 'merluza', 'cocina', 'cancelado', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59'),
-('A542E', 'sprite', 'bar', 'cancelado', '00:01:10', '2018-11-30 20:34:15', 2, '2018-12-03 02:31:01'),
-('AE85L', 'choripan', 'cocina', 'terminado', '00:15:00', '2018-12-03 02:33:25', 3, '2018-12-03 02:40:00'),
-('AE85L', 'daikiri', 'bar', 'en preparacion', '00:27:00', '2018-12-03 21:40:42', 2, NULL),
-('AE86T', 'sprite', 'bar', 'listo para servir', '00:12:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:43:00'),
-('AE89B', 'sprite', 'bar', 'terminado', '00:01:30', '2018-12-03 02:34:28', 2, '2018-12-03 02:35:00'),
-('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3, NULL),
-('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2, '2018-11-30 23:45:00'),
-('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3, NULL),
-('D9GZJ', 'milanesa', 'cocina', 'en preparacion', '00:50:06', '2018-12-03 21:40:42', 3, NULL),
-('D9GZJ', 'sprite', 'bar', 'listo para servir', '00:10:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:41:00'),
-('TY7oI', 'tequila', 'bar', 'listo para servir', '00:11:13', '2018-12-01 00:30:47', 3, '2018-12-01 00:44:00');
+('2S4HD', 'merluza', 'cocina', 'cancelado', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59');
 
 -- --------------------------------------------------------
 
@@ -274,7 +251,7 @@ ALTER TABLE `encuestas`
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `mesas`
 --

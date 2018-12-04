@@ -167,6 +167,24 @@ public function ModificarEstado()
        $consulta->bindValue(':item',$this->getItem(), PDO::PARAM_STR);
        return $consulta->execute();
 }
+public function ModificarPreparar()
+{
+       $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+       $consulta =$objetoAccesoDato->RetornarConsulta("
+           update pedido_detalles 
+           set estado_pedido=:estado_pedido,
+           tiempo_inicio=:tiempo_inicio,
+           tiempo_estimado=:tiempo_estimado,
+           id=:id
+           WHERE cod_pedido=:cod_pedido AND item=:item");
+       $consulta->bindValue(':cod_pedido',$this->getCod_pedido(), PDO::PARAM_STR);
+       $consulta->bindValue(':estado_pedido',$this->getEstado_pedido(), PDO::PARAM_STR);
+       $consulta->bindValue(':tiempo_inicio',$this->getTiempo_inicio(), PDO::PARAM_STR);
+       $consulta->bindValue(':tiempo_estimado',$this->getTiempo_estimado(), PDO::PARAM_STR);
+       $consulta->bindValue(':id',$this->getId(), PDO::PARAM_INT);
+       $consulta->bindValue(':item',$this->getItem(), PDO::PARAM_STR);
+       return $consulta->execute();
+}
 public function ModificarTerminar()
 {
        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 

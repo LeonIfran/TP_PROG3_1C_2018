@@ -132,6 +132,17 @@ class facturas
         $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $resultadoConsulta;
     }
+    public function InsertarFactura()
+    {
+            $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+            $consulta =$objetoAccesoDato->RetornarConsulta("
+            INSERT into facturas (cod_mesa, fecha, importe)values(:cod_mesa, :fecha, :importe)");
+            $consulta->bindValue(':cod_mesa',$this->getCod_mesa(), PDO::PARAM_INT);
+            $consulta->bindValue(':fecha', $this->getFecha(), PDO::PARAM_STR);
+            $consulta->bindValue(':importe', $this->getImporte(), PDO::PARAM_STR);
+            $consulta->execute();		
+            return $objetoAccesoDato->RetornarUltimoIdInsertado();
+    }
 }
 
 ?>

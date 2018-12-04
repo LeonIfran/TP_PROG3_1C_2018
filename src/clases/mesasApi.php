@@ -139,9 +139,24 @@ class mesasApi extends mesas
         $miPedido->InsertarMesa();
         $objDelaRespuesta->respuesta="Se Agrego una nueva mesa";   
         return $response->withJson($objDelaRespuesta, 200);
-        
+    }
+    public function CargarFactura($request, $response, $args)
+    {
+        $objDelaRespuesta= new stdclass();
+        $ArrayDeParametros = $request->getParsedBody();//tomo los parametros del POST
 
-
+        //los asigno a variables
+        $cod_mesa= $ArrayDeParametros['codmesa'];
+        $fecha = date('Y-m-d H:i:s'); 
+        $importe= $ArrayDeParametros['importe'];
+        $miFactura = new facturas();
+        //asigno los atributos
+        $miFactura->setCod_mesa($cod_mesa);
+        $miFactura->setFecha($fecha);
+        $miFactura->setImporte($importe);
+        $miFactura->InsertarFactura();
+        $objDelaRespuesta->respuesta="Se cargo la factura para la mesa ".$miFactura->getCod_mesa();   
+        return $response->withJson($objDelaRespuesta, 200);
     }
 }
 
