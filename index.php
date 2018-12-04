@@ -78,6 +78,7 @@ $app->group('/admin',function () {
     $this->post('/pedidos/tardios',\detallesApi::class . ':TraerTarde');
     $this->post('/pedidos/cancelados',\detallesApi::class . ':TraerEstados');
     $this->post('/mesas/alta',\mesasApi::class . ':CargarUno');
+    $this->post('/mesas/usadas',\mesasApi::class . ':TraerUsadas');
     $this->post('/mesas/facturacion',\mesasApi::class . ':TraerFacturados');
     $this->post('/mesas/facturas',\mesasApi::class . ':TraerFacturaMayorMenor');
     $this->post('/mesas/fechas',\mesasApi::class . ':TrearFechas');

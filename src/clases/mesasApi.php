@@ -7,7 +7,7 @@ class mesasApi extends mesas
     public function ModificarUna($request, $response, $args) 
     {
        $ArrayDeParametros = $request->getParsedBody();
-       $miMesa = new media();
+       $miMesa = new mesas();
        $miMesa->setCod_mesa($ArrayDeParametros['cod']);
        $miMesa->setEstado_mesa($ArrayDeParametros['estado']);
        $resultado =$miMesa->ModificarMesasParametros();
@@ -20,7 +20,7 @@ class mesasApi extends mesas
    public function ModificarEsperando($request, $response, $args) 
    {
       $ArrayDeParametros = $request->getParsedBody();
-      $miMesa = new media();
+      $miMesa = new mesas();
       $miMesa->setCod_mesa($ArrayDeParametros['cod']);
       $miMesa->setEstado_mesa("con clientes esperando");
       $resultado =$miMesa->ModificarMesasParametros();
@@ -32,7 +32,7 @@ class mesasApi extends mesas
    public function ModificarServir($request, $response, $args) 
    {
       $ArrayDeParametros = $request->getParsedBody();
-      $miMesa = new media();
+      $miMesa = new mesas();
       $miMesa->setCod_mesa($ArrayDeParametros['cod']);
       $miMesa->setEstado_mesa("con clientes comiendo");
       $resultado =$miMesa->ModificarMesasParametros();
@@ -44,7 +44,7 @@ class mesasApi extends mesas
     public function ModificarCuenta($request, $response, $args) 
     {
         $ArrayDeParametros = $request->getParsedBody();
-        $miMesa = new media();
+        $miMesa = new mesas();
         $miMesa->setCod_mesa($ArrayDeParametros['cod']);
         $miMesa->setEstado_mesa("con clientes pagando");
         $resultado =$miMesa->ModificarMesasParametros();
@@ -57,7 +57,7 @@ class mesasApi extends mesas
     public function ModificarCerrar($request, $response, $args) 
     {
         $ArrayDeParametros = $request->getParsedBody();
-        $miMesa = new media();
+        $miMesa = new mesas();
         $miMesa->setCod_mesa($ArrayDeParametros['cod']);
         $miMesa->setEstado_mesa("cerrada");
         $resultado =$miMesa->ModificarMesasParametros();
@@ -84,6 +84,16 @@ class mesasApi extends mesas
         $miFacturacion=facturas::TraerMayorMenorFactura($opcion);
         $objDelaRespuesta= new stdclass();
         $objDelaRespuesta->tarea="Mesas con ".$opcion." facturas!";
+        $objDelaRespuesta->resultado=$miFacturacion;
+        return $response->withJson($objDelaRespuesta, 200);		
+    }
+    public function TraerUsadas($request, $response, $args)
+    {
+        $ArrayDeParametros = $request->getParsedBody();
+        $opcion = $ArrayDeParametros['opcion'];
+        $miFacturacion=facturas::TraerMasMenosUsada($opcion);
+        $objDelaRespuesta= new stdclass();
+        $objDelaRespuesta->tarea="Mesas con ".$opcion." usos!";
         $objDelaRespuesta->resultado=$miFacturacion;
         return $response->withJson($objDelaRespuesta, 200);		
     }

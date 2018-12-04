@@ -1,0 +1,1248 @@
+{
+	"info": {
+		"_postman_id": "609cdae1-e5ec-41ee-9528-f4b3e58f344a",
+		"name": "comanda hosting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usuario",
+							"value": "Pedr01",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/login/",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"login",
+						""
+					]
+				},
+				"description": "El login va a devolver un JWT, copiarlo sin comillas y agregarlo en la llave \"token\" en headers en las consulas post"
+			},
+			"response": []
+		},
+		{
+			"name": "Mozo pedido Alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codmesa",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "descpedido",
+							"value": "milanesa, vino",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/pedidos/alta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mozo detalles alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod_pedido",
+							"value": "77OPD",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "bar",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "vino",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/detalles/alta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "empleados pendientes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "cocina",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/detalles/pendientes",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"pendientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "empleado modificar detalle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM4OTk2ODAsImV4cCI6MTU0MzkwMzI4MCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.psGrkWvV-sIg0YvdyyvqbR-n2Y3hdxgI6NWujPSf6zk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "OAXN5",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "en preparacion",
+							"type": "text"
+						},
+						{
+							"key": "tiempo_est",
+							"value": "00:43:22",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "pollo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/detalles/preparar",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"preparar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empleado preparar detalles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDQ1NjUsImV4cCI6MTU0Mzk0ODE2NSwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.8RzoXcZw9d6G4zg70lh7sKjNewVbRAk3PL-HAEqPxRk"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "A542E",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "en preparacion",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "tiempo_est",
+							"value": "00:04:45",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "sprite",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/detalles/preparar",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"preparar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mesas abrir encuesta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDg1NDUsImV4cCI6MTU0Mzk1MjE0NSwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.dIpqqp4tuiVJWTT6vJNX1Z4Au7RmZUJKIUvaU3HT06I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/mesas/abrirencuesta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"abrirencuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empleados detalles terminar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "2S4HD",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "merluza",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/terminar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"terminar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Socios pedidos traer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDg1NDUsImV4cCI6MTU0Mzk1MjE0NSwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.dIpqqp4tuiVJWTT6vJNX1Z4Au7RmZUJKIUvaU3HT06I",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/socios/pedidos",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"socios",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clientes traer pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/clientes/pedido/2S4HD",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"clientes",
+						"pedido",
+						"2S4HD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clientes encuesta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "cod_mesa",
+							"value": "10002",
+							"type": "text"
+						},
+						{
+							"key": "mesa",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "restaurante",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "mozo",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "cocinero",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "comentarios",
+							"value": "a la comida le faltaban condimentos",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/clientes/encuesta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"clientes",
+						"encuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mesas esperando",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk0OTYsImV4cCI6MTU0Mzk1MzA5NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.4_1C-DVPdIVXDBecW4u5U86bCVtudGBfo9kxdi8pRpg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/mesas/esperando",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"esperando"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mesa servida",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk0OTYsImV4cCI6MTU0Mzk1MzA5NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.4_1C-DVPdIVXDBecW4u5U86bCVtudGBfo9kxdi8pRpg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/mesas/servida",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"servida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas pagando",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk0OTYsImV4cCI6MTU0Mzk1MzA5NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.4_1C-DVPdIVXDBecW4u5U86bCVtudGBfo9kxdi8pRpg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/mesas/cuenta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"cuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas abrir encuesta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk0OTYsImV4cCI6MTU0Mzk1MzA5NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.4_1C-DVPdIVXDBecW4u5U86bCVtudGBfo9kxdi8pRpg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/mesas/abrirencuesta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"abrirencuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Socios mesas cerrar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk0OTYsImV4cCI6MTU0Mzk1MzA5NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.4_1C-DVPdIVXDBecW4u5U86bCVtudGBfo9kxdi8pRpg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/socios/cerrar",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"socios",
+						"cerrar"
+					]
+				},
+				"description": "setea el estado de la mesa en cerrada"
+			},
+			"response": []
+		},
+		{
+			"name": "Socios factura alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTA5ODAsImV4cCI6MTU0Mzk1NDU4MCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.tDeDVKOIBpxCHID1jbx0lXhrIDlYqfm_jg3ur9fKfJU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codmesa",
+							"value": "10002",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "345.30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/socios/factura",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"socios",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin operaciones x area",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTE1NTAsImV4cCI6MTU0Mzk1NTE1MCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.U0iaesuaJsb3CugKJKMc7XCuOpxnaSJu10bjdOPB20k",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/operaciones/areas",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"areas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Operaciones por area con empleado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTE4MzAsImV4cCI6MTU0Mzk1NTQzMCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.bq4z00EgutiN2SmubNlT0HegCMTjC2IhTt7ZWihMv38",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/operaciones/areas/empleado",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"areas",
+						"empleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Operaciones individual",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTE1NTAsImV4cCI6MTU0Mzk1NTE1MCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.U0iaesuaJsb3CugKJKMc7XCuOpxnaSJu10bjdOPB20k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/operaciones/individual",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"individual"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin traer logeos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTE4MzAsImV4cCI6MTU0Mzk1NTQzMCwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.bq4z00EgutiN2SmubNlT0HegCMTjC2IhTt7ZWihMv38",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/empleados/logeos",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"empleados",
+						"logeos"
+					],
+					"query": [
+						{
+							"key": "area",
+							"value": "bar",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin alta usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTIyNTYsImV4cCI6MTU0Mzk1NTg1NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.efegt1ayJ5TOW8unDalSexKpWbs5Wh3GwIXX2ZUCIcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "usuario",
+							"value": "Amalia",
+							"type": "text"
+						},
+						{
+							"key": "perfil",
+							"value": "cocinera",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "qwerty",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "activo",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/empleados/alta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"empleados",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mas/menos vendidos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTIyNTYsImV4cCI6MTU0Mzk1NTg1NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.efegt1ayJ5TOW8unDalSexKpWbs5Wh3GwIXX2ZUCIcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/pedidos/vendidos",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"vendidos"
+					]
+				},
+				"description": "traer los pedidos que mas o menos se vendieron, ingresar mas o menos en opcion."
+			},
+			"response": []
+		},
+		{
+			"name": "Admin pedidos tarde",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTI1MzMsImV4cCI6MTU0Mzk1NjEzMywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.pcpWkIEidfqX-ADTnKJMbeKd9COLkBbqs7FeqoRlC7I",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/pedidos/tardios",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"tardios"
+					]
+				},
+				"description": "traer los pedidos con estado listo para servir o terminado que llegaron tarde"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin pedidos cancelados",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTI1MzMsImV4cCI6MTU0Mzk1NjEzMywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.pcpWkIEidfqX-ADTnKJMbeKd9COLkBbqs7FeqoRlC7I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/pedidos/cancelados",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"cancelados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas mas/menos usos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTMwOTIsImV4cCI6MTU0Mzk1NjY5MiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.MN4HolPkMDy_zsNPo52sOVzc8MvIA4Zbw_7TlxsAntI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/mesas/usadas",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"usadas"
+					]
+				},
+				"description": "ingresar mas o menos en la opcion en el body"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas mas/menos facturacion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "menor",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/mesas/facturas",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"facturas"
+					]
+				},
+				"description": "Mesas que facturaron la mayor/menor cantidad\nponer mayor o menor en opcion en el body"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas importe mas alto/bajo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTMwOTIsImV4cCI6MTU0Mzk1NjY5MiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.MN4HolPkMDy_zsNPo52sOVzc8MvIA4Zbw_7TlxsAntI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/mesas/facturacion",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"facturacion"
+					]
+				},
+				"description": "Trae la mesa con la factura con el importe mas alto/bajo\nPoner mas o menor en opcion en el body"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas facturacion entre fechas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "fechaUno",
+							"value": "2018-11-01",
+							"type": "text"
+						},
+						{
+							"key": "fechaDos",
+							"value": "2018-11-30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/mesas/fechas",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"fechas"
+					]
+				},
+				"description": "poner codigo de la mesa\nPoner las fechas con el siguiente formato\nYYYY-MM-DD hh:mm:ss"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas mejores/peores comentarios",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTM1NjMsImV4cCI6MTU0Mzk1NzE2MywiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.wBMDdvpZCRzVqZXZ5LTcOqvTDPsgrMdv7kSY_GYLel4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "peores",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/mesas/comentarios",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"comentarios"
+					]
+				},
+				"description": "En opcion poner mejores o peores"
+			},
+			"response": []
+		}
+	]
+}

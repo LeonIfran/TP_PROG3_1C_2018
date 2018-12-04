@@ -41,7 +41,7 @@ public function ModificarMesasParametros()
        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
        $consulta =$objetoAccesoDato->RetornarConsulta("
            update mesas
-           set estado_mesa=:estado_mesa,
+           set estado_mesa=:estado_mesa
            WHERE cod_mesa=:cod_mesa");
        $consulta->bindValue(':cod_mesa',$this->getCod_mesa(), PDO::PARAM_INT);
        $consulta->bindValue(':estado_mesa',$this->getEstado_mesa(), PDO::PARAM_STR);

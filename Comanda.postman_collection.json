@@ -1,0 +1,1363 @@
+{
+	"info": {
+		"_postman_id": "03574eee-c4e1-46cb-afce-6f2ded3c6869",
+		"name": "Comanda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comanda Host login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "usuario",
+							"value": "Pedr01",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/login/",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logic local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "usuario",
+							"value": "roberto",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "qwerty",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Traer usuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDMzNjAyNDMsImV4cCI6MTU0MzM2Mzg0MywiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjEsIm5vbWJyZSI6IlBlZHJvIiwicGVyZmlsIjoiYmFydGVuZGVyIiwidXN1YXJpbyI6IlBlZHIwMSIsImZlY2hhX2FsdGEiOm51bGwsIm9wZXJhY2lvbmVzIjpudWxsfSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.Rg_OyUCMllsZihtq-uofqI6Oe5aSqgF5pcFAw2V_OiA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/comanda/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"comanda",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Traer Usuario host",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDMzNjAyMTUsImV4cCI6MTU0MzM2MzgxNSwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsIm5vbWJyZSI6IlBlZHJvIiwicGVyZmlsIjoiYmFydGVuZGVyIiwidXN1YXJpbyI6IlBlZHIwMSIsImZlY2hhX2FsdGEiOm51bGwsIm9wZXJhY2lvbmVzIjpudWxsfSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.zj18kZ4sxFizYdpmB1PKC3DsVmsO3PeiEb-OpE0p1ME",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/comanda/2",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"comanda",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos traer todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/pedidos/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM3OTI0NzMsImV4cCI6MTU0Mzc5NjA3MywiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.lUV7hyVEC-lPPbhYybAt2ZCS6f_jXxUk1hkSbjvY42c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "A542E",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/pedidos/mesa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"mesa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos con detalles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "A542E",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/pedidos/detalles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"detalles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alta pedidos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM4MTMxMTYsImV4cCI6MTU0MzgxNjcxNiwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.wfVWtk0VOjRkazO_dhMNk5tU1Yl_Hnn-HH2Sp-4zq4E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codmesa",
+							"value": "10001",
+							"type": "text"
+						},
+						{
+							"key": "descpedido",
+							"value": "merluza, vino",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/pedidos/alta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detalles alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDQ1NjUsImV4cCI6MTU0Mzk0ODE2NSwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.8RzoXcZw9d6G4zg70lh7sKjNewVbRAk3PL-HAEqPxRk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod_pedido",
+							"value": "2S4HD",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "cocina",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "merluza",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/alta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codmesa",
+							"value": "1001",
+							"type": "text"
+						},
+						{
+							"key": "descpedido",
+							"value": "trufas, levite",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/pedidos/alta",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalles modificacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "A542E",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "en preparacion",
+							"type": "text"
+						},
+						{
+							"key": "tiempo_est",
+							"value": "00:01:45",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "sprite",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/modificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"modificacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clientes pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/clientes/pedido/AE86T",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"clientes",
+						"pedido",
+						"AE86T"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pendientes por area",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "cocina",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/pendientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"pendientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Traer todos los pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/pedidos/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"pedidos",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos pendientes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "bar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/pendientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"pendientes"
+					],
+					"query": [
+						{
+							"key": "area",
+							"value": "bar",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "abrir encuesta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/mesas/abrirencuesta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"abrirencuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario abrir encuesta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "cod_mesa",
+							"value": "1001",
+							"type": "text"
+						},
+						{
+							"key": "mesa",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "restaurante",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "mozo",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cocinero",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "comentarios",
+							"value": "la comida estaba requisima",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/clientes/encuesta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"clientes",
+						"encuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alta usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM3OTI4NzUsImV4cCI6MTU0Mzc5NjQ3NSwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.2l8eAOrVh8S-2vt7YBqMpld71aZag4srngIkNFm5QYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "usuario",
+							"value": "nadia",
+							"type": "text"
+						},
+						{
+							"key": "perfil",
+							"value": "cocinera",
+							"type": "text"
+						},
+						{
+							"key": "pass",
+							"value": "1111",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "activo",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/comanda/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"comanda",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traer logeos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "area",
+							"value": "bar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/empleados/logeos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"empleados",
+						"logeos"
+					],
+					"query": [
+						{
+							"key": "area",
+							"value": "bar",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin operaciones x area",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/operaciones/areas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"areas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Operaciones X area con empleado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/operaciones/areas/empleado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"areas",
+						"empleado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin operaciones individuales",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM4OTU5MjQsImV4cCI6MTU0Mzg5OTUyNCwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.D8k2EdqUqhnRlnvEBNRPO2dSsDY68CA70jfD0Jua9B8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/operaciones/individual",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"operaciones",
+						"individual"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin cambiar estado empleado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "suspendido",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/empleados/estado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"empleados",
+						"estado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalles terminar pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "2S4HD",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "merluza",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/terminar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"terminar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos mas o menos vendidos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NTIyNTYsImV4cCI6MTU0Mzk1NTg1NiwiYXVkIjoiYzA4MjllNmMxNDc1OWQ2NDk2ZmQ0N2Y1MTY3YmM2MTFlZjRhZWViNCIsImRhdGEiOnsiaWQiOjEsInBlcmZpbCI6ImJhcnRlbmRlciIsInVzdWFyaW8iOiJQZWRyMDEiLCJlc3RhZG8iOiJhY3Rpdm8ifSwiYXBwIjoiTGEgY29tYW5kYSAyMDE4IExlb24gSWZyYW4ifQ.efegt1ayJ5TOW8unDalSexKpWbs5Wh3GwIXX2ZUCIcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "menos",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://leonifran.000webhostapp.com/TP_PROG3_1C_2018/admin/pedidos/vendidos",
+					"protocol": "https",
+					"host": [
+						"leonifran",
+						"000webhostapp",
+						"com"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"vendidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin pedidos tardios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/pedidos/tardios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"tardios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin pedidos cancelados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "cancelado",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/pedidos/cancelados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"cancelados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin mesas mas/menos facturacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mas",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/mesas/facturacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"facturacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin facturacion entre fechas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "fechaUno",
+							"value": "2018-11-01",
+							"type": "text"
+						},
+						{
+							"key": "fechaDos",
+							"value": "2018-11-30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/mesas/fechas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"fechas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mayor/menor importe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mayor",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/mesas/facturas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"facturas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin mesas comentarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "opcion",
+							"value": "mejores",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/mesas/comentarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"comentarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin pedidos cancelados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/pedidos/cancelados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"pedidos",
+						"cancelados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin mesas alta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM4OTU5MjQsImV4cCI6MTU0Mzg5OTUyNCwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.D8k2EdqUqhnRlnvEBNRPO2dSsDY68CA70jfD0Jua9B8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod_mesa",
+							"value": "10001",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/admin/mesas/alta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"admin",
+						"mesas",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Socios pedidos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM4OTU5MjQsImV4cCI6MTU0Mzg5OTUyNCwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.D8k2EdqUqhnRlnvEBNRPO2dSsDY68CA70jfD0Jua9B8",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/socios/pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"socios",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empleado preparar detalle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDQ1NjUsImV4cCI6MTU0Mzk0ODE2NSwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.8RzoXcZw9d6G4zg70lh7sKjNewVbRAk3PL-HAEqPxRk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "A542E",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "en preparacion",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "tiempo_est",
+							"value": "00:04:45",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "item",
+							"value": "sprite",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/detalles/preparar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"detalles",
+						"preparar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Socios factura",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDQ1NjUsImV4cCI6MTU0Mzk0ODE2NSwiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.8RzoXcZw9d6G4zg70lh7sKjNewVbRAk3PL-HAEqPxRk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codmesa",
+							"value": "10002",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "345.30",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/socios/factura",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"socios",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/TP_PROG3_1C_2018/mesas/esperando",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDM5NDk4NDcsImV4cCI6MTU0Mzk1MzQ0NywiYXVkIjoiOTlmYzg0ZmEyYTMwNTRiZTFkMjE1YjdmMmZlYjRiZDU3YWFiOWM3OSIsImRhdGEiOnsiaWQiOjIsInBlcmZpbCI6ImNvY2luZXJvIiwidXN1YXJpbyI6InJvYmVydG8iLCJlc3RhZG8iOiJzdXNwZW5kaWRvIn0sImFwcCI6IkxhIGNvbWFuZGEgMjAxOCBMZW9uIElmcmFuIn0.6m6e5SmgNTyXsE6HRenpGzR3R-SlUvrZmF35fdvgSZw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cod",
+							"value": "10002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/TP_PROG3_1C_2018/mesas/esperando",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"TP_PROG3_1C_2018",
+						"mesas",
+						"esperando"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
