@@ -78,6 +78,8 @@ $app->group('/admin',function () {
     $this->post('/pedidos/cancelados',\detallesApi::class . ':TraerEstados');
     $this->post('/mesas/facturacion',\mesasApi::class . ':TraerFacturados');
     $this->post('/mesas/facturas',\mesasApi::class . ':TraerFacturaMayorMenor');
+    $this->post('/mesas/fechas',\mesasApi::class . ':TrearFechas');
+    $this->post('/mesas/comentarios',\mesasApi::class . ':TraerComentarios');
 })->add(\MWparaCORS::class . ':HabilitarCORSTodos');
 $app->run();
 ?>

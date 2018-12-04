@@ -118,7 +118,20 @@ class facturas
         $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $resultadoConsulta;
     }
-
+    public static function TraerRecaudacionFechas($cod,$fechaUno,$fechaDos)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->retornarConsulta("
+        SELECT f.cod_mesa, SUM(f.importe) as total_recaudado
+        FROM facturas as f
+        WHERE  f.cod_mesa = :cod_mesa AND f.fecha BETWEEN :fechaUno AND :fechaDos");
+        $consulta->bindValue(':cod_mesa',$cod, PDO::PARAM_INT);
+        $consulta->bindValue(':fechaUno',$fechaUno, PDO::PARAM_STR);
+        $consulta->bindValue(':fechaDos',$fechaDos, PDO::PARAM_STR);
+        $consulta->execute();
+        $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+        return $resultadoConsulta;
+    }
 }
 
 ?>

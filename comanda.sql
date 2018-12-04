@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2018 a las 00:13:31
+-- Tiempo de generación: 04-12-2018 a las 01:29:20
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -39,6 +39,18 @@ CREATE TABLE `encuestas` (
   `comentarios` varchar(66) COLLATE utf8_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `encuestas`
+--
+
+INSERT INTO `encuestas` (`id_encuesta`, `cod_mesa`, `fecha`, `mesa`, `restaurante`, `mozo`, `cocinero`, `comentarios`) VALUES
+(1, 10000, '2018-12-02 22:00:00', 8, 8, 8, 8, 'saadsdass'),
+(2, 10001, '2018-12-03 00:00:00', 5, 5, 5, 5, 'asdsasdadsa'),
+(3, 10001, '2018-11-29 00:00:00', 10, 6, 7, 9, 'dsasasd'),
+(4, 10001, '2018-11-27 00:00:00', 5, 4, 2, 3, 'adsadsdas'),
+(5, 10000, '2018-12-02 09:30:00', 2, 3, 2, 7, ''),
+(6, 10000, '2018-12-02 16:30:00', 3, 5, 4, 5, 'asddsadasdas');
+
 -- --------------------------------------------------------
 
 --
@@ -62,7 +74,10 @@ INSERT INTO `facturas` (`num_factura`, `cod_mesa`, `fecha`, `importe`) VALUES
 (0000003, 10001, '2018-12-01 17:22:00', '999.99'),
 (0000004, 1001, '2018-12-01 21:39:22', '99999.99'),
 (0000005, 1001, '2018-12-01 21:39:22', '12000.22'),
-(0000006, 1000, '2018-11-29 12:30:00', '160.95');
+(0000006, 1000, '2018-11-29 12:30:00', '160.95'),
+(0000007, 10000, '2018-11-29 00:00:00', '100.00'),
+(0000008, 10000, '2018-11-01 00:00:00', '200.00'),
+(0000009, 10000, '2018-11-15 00:00:00', '250.00');
 
 -- --------------------------------------------------------
 
@@ -249,12 +264,12 @@ ALTER TABLE `personal`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `id_encuesta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_encuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `num_factura` int(7) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `mesas`
 --

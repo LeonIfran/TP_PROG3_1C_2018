@@ -47,6 +47,26 @@ public function ModificarMesasParametros()
        $consulta->bindValue(':estado_mesa',$this->getEstado_mesa(), PDO::PARAM_STR);
        return $consulta->execute();
 }
+public static function TraerPorComentarios($opcion)
+{
+        $opcion = strtolower($opcion);
+        $orden = 'ASC';
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        if ($opcion=='mejores') 
+        {
+            $orden = 'DESC';
+        } 
+        $consulta =$objetoAccesoDato->RetornarConsulta("
+        SELECT m.cod_mesa, SUM(e.mesa) as puntaje_total
+        FROM mesas as m, encuestas as e
+        WHERE m.cod_mesa = e.cod_mesa
+        GROUP BY m.cod_mesa
+        ORDER BY SUM(e.mesa) $orden
+        LIMIT 1
+        ");
+        $consulta->execute();			
+        return $consulta->fetchAll(PDO::FETCH_OBJ);		
+}
 #endregion
 }
 
