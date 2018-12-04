@@ -64,12 +64,6 @@ class Pedidos
         $consulta->bindvalue(':cod_pedido',$codmesa, PDO::PARAM_STR);
         $consulta->execute();
         $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
-        //echo var_dump($resultadoConsulta);
-        //echo $resultadoConsulta[0]->tiempo_estimado;
-        //return $consulta->fetchAll(PDO::FETCH_OBJ);
-/*         echo $tiempoRestante = time() - ($resultadoConsulta[0]->tiempo_estimado);
-        echo $tiempoRestante;
-        echo date('h:i:s',$tiempoRestante); */
         return $resultadoConsulta;
     }
     public static function TraerUnPedidoConDetalles($codmesa)
@@ -81,7 +75,22 @@ class Pedidos
         $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
         return $resultadoConsulta;
     }
-    
+    public static function TraerUnPedidoClientes($codPedido)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("
+        SELECT cod_pedido,item,tiempo_inicio,tiempo_estimado ,TIMEDIFF(TIMESTAMP(tiempo_inicio,tiempo_estimado),CURRENT_TIMESTAMP) as tiempo_restante
+        FROM `pedido_detalles` 
+        WHERE estado_pedido = 'en preparacion' 
+        AND
+        cod_pedido = :cod_pedido
+        AND 
+        TIMEDIFF(TIMESTAMP(tiempo_inicio,tiempo_estimado),CURRENT_TIMESTAMP)>0");
+        $consulta->bindvalue(':cod_pedido',$codPedido, PDO::PARAM_STR);
+        $consulta->execute();
+        $resultadoConsulta = $consulta->fetchAll(PDO::FETCH_OBJ);
+        return $resultadoConsulta;
+    }
     #endregion
     #region insert
     public function InsertUnPedido()

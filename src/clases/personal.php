@@ -136,6 +136,7 @@ class Personal
 		return $consulta->rowCount();
 	}
 	
+	
 }
 
 

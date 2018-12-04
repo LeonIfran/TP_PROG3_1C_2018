@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2018 a las 01:29:20
+-- Tiempo de generación: 04-12-2018 a las 01:55:57
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 
@@ -175,11 +175,13 @@ INSERT INTO `pedido_detalles` (`cod_pedido`, `item`, `area`, `estado_pedido`, `t
 ('2S4HD', 'merluza', 'cocina', 'cancelado', '00:37:23', '2018-12-03 02:00:49', 3, '2018-12-03 02:22:59'),
 ('A542E', 'sprite', 'bar', 'cancelado', '00:01:10', '2018-11-30 20:34:15', 2, '2018-12-03 02:31:01'),
 ('AE85L', 'choripan', 'cocina', 'terminado', '00:15:00', '2018-12-03 02:33:25', 3, '2018-12-03 02:40:00'),
+('AE85L', 'daikiri', 'bar', 'en preparacion', '00:27:00', '2018-12-03 21:40:42', 2, NULL),
 ('AE86T', 'sprite', 'bar', 'listo para servir', '00:12:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:43:00'),
 ('AE89B', 'sprite', 'bar', 'terminado', '00:01:30', '2018-12-03 02:34:28', 2, '2018-12-03 02:35:00'),
 ('D9GZJ', 'coca', 'bar', 'en preparacion', '00:10:00', '2018-12-01 01:51:38', 3, NULL),
 ('D9GZJ', 'choripan', 'cocina', 'en preparacion', '00:17:00', '2018-11-30 23:30:49', 2, NULL),
 ('D9GZJ', 'manaos', 'bar', 'en preparacion', '00:10:00', '2018-12-01 00:34:49', 3, NULL),
+('D9GZJ', 'milanesa', 'cocina', 'en preparacion', '00:50:06', '2018-12-03 21:40:42', 3, NULL),
 ('D9GZJ', 'sprite', 'bar', 'listo para servir', '00:10:00', '2018-12-03 02:35:42', 2, '2018-12-03 02:41:00'),
 ('TY7oI', 'tequila', 'bar', 'listo para servir', '00:11:13', '2018-12-01 00:30:47', 3, '2018-12-01 00:44:00');
 

@@ -11,10 +11,11 @@ class detallesApi extends detalles
     public function TraerUnoClientes($request, $response, $args)
     {
         $codP = $args['id'];
-        $unDetalle=detalles::TraerUnDetalleCliente($codP);
+        $unDetalle=detalles::TraerUnDetalleClientes($codP);
         $newresponse = $response->withJson($unDetalle,200);
         return $newresponse;
     }
+    
     public function TraerPendientes($request, $response, $args)
     {
         $ArrayDeParametros = $request->getParsedBody();
